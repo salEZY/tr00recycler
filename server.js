@@ -15,14 +15,14 @@ app.get('/', (req, res) => {
 })
 
 app.post('/add-material', async (req, res) => {
-  const { materialName, typeOfMaterial } = req.body
-  if (!materialName || !typeOfMaterial) {
+  const { materialName, materialType } = req.body
+  if (!materialName || !materialType) {
     return res.status(404).json({ msg: 'Name, Type or both are missing!'})
   }
 
   const newMaterial = {
     materialName,
-    typeOfMaterial
+    materialType
   }
 
   try {
@@ -53,7 +53,7 @@ app.get('/material', async (req, res) => {
     if (!material) {
       return res.status(404).json({ msg: 'No material found'})
     }
-    res.send(`Type of ${materialName} is ${material.typeOfMaterial}!`)
+    res.send(`Type of ${materialName} is ${material.materialType}!`)
   } catch (err) {
     console.error(err.message)
     res.status(500).send('Server Error!')

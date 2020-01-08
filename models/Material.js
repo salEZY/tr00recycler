@@ -3,13 +3,13 @@ const mongoose = require('mongoose')
 const MaterialSchema = new mongoose.Schema({
   materialName: {
     type: String,
-    required: true,
-    unique: true
+    unique: true,
+    required: true
   },
-  typeOfMaterial: {
+  materialType: {
     type: String,
     required: true
   }
 })
 
-module.exports = Material = mongoose.model('materials', MaterialSchema)
+module.exports = Material = mongoose.model('materijali', MaterialSchema)
