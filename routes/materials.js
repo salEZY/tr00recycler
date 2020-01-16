@@ -66,7 +66,10 @@ router.get('/type/:type', async(req, res) => {
         name: type[i].materialName
       }
     }
-    res.json(mat)
+    res.json({
+      type: matType,
+      mat
+    })
   } catch (err) {
     console.error(err.message)
     res.status(500).send('Server Error!')
