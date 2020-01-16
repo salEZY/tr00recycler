@@ -70,6 +70,9 @@ router.get('/type/:type', async(req, res) => {
 router.get('/', async (req, res) => {
   try {
     let materials = await Material.find()
+    if (!materials.length) {  
+      return res.status(404).json({ message: 'There is no data!'})
+    }
     let mat = {}
     for (let i = 0; i < materials.length; i++) {
       mat[i+1] = {
