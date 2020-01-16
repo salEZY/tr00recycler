@@ -72,7 +72,7 @@ router.get('/', async (req, res) => {
     let materials = await Material.find()
     let mat = {}
     for (let i = 0; i < materials.length; i++) {
-      mat[i] = {
+      mat[i+1] = {
         name: materials[i].materialName,
         type: materials[i].materialType
       }
