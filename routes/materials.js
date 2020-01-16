@@ -67,4 +67,21 @@ router.get('/type/:type', async(req, res) => {
   }
 })
 
+router.get('/', async (req, res) => {
+  try {
+    let materials = await Material.find()
+    let mat = {}
+    for (let i = 0; i < materials.length; i++) {
+      mat[i] = {
+        name: materials[i].materialName,
+        type: materials[i].materialType
+      }
+    }
+    res.json(mat)
+  } catch (err) {
+    console.error(err.message)
+    res.status(500).send('Server Error!')
+  } 
+})
+
 module.exports = router
