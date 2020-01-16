@@ -6,7 +6,7 @@ const router = express.Router()
 router.post('/add', async (req, res) => {
   const { materialName, materialType } = req.body
   if (!materialName || !materialType) {
-    return res.status(404).json({ msg: 'Name, Type or both are missing!'})
+    return res.status(404).json({ message: 'Name, Type or both are missing!'})
   }
 
   const newMaterial = {
@@ -18,7 +18,7 @@ router.post('/add', async (req, res) => {
     let material = await Material.findOne({ materialName })
 
     if (material) {
-      return res.status(400).json({ msg: 'Material already exists'})
+      return res.status(400).json({ message: 'Material already exists'})
     }
 
     material = new Material(newMaterial)
@@ -34,13 +34,13 @@ router.post('/add', async (req, res) => {
 router.get('/:id', async (req, res) => {
   const id = req.params.id
   if (!id) {
-    return res.status(404).json({ msg: 'No material provided!'})
+    return res.status(404).json({ message: 'No material provided!'})
   }
 
   try {
     let material = await Material.findById({ _id: id })
     if (!material) {
-      return res.status(404).json({ msg: 'No material found'})
+      return res.status(404).json({ message: 'No material found'})
     }
     res.send(`${material.materialName} goes to ${material.materialType} bin!`)
   } catch (err) {
@@ -53,12 +53,12 @@ router.get('/:id', async (req, res) => {
 router.get('/type/:type', async(req, res) => {
   const matType = req.params.type
   if (!matType) {
-    return res.status(404).json({ msg: 'No type provided!'})
+    return res.status(404).json({ message: 'No type provided!'})
   }
   try {
     let type = await Material.find({ materialType: matType })
-    if (!type) {  
-      return res.status(404).json({ msg: 'Type does NOT exist!'})
+    if (!type.length) {  
+      return res.status(404).json({ message: 'Type does NOT exist!'})
     }
     res.json(type)
   } catch (err) {
