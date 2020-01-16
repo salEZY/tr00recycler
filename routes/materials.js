@@ -60,7 +60,13 @@ router.get('/type/:type', async(req, res) => {
     if (!type.length) {  
       return res.status(404).json({ message: 'Type does NOT exist!'})
     }
-    res.json(type)
+    let mat = {}
+    for (let i = 0; i < type.length; i++) {
+      mat[i+1] = {
+        name: type[i].materialName
+      }
+    }
+    res.json(mat)
   } catch (err) {
     console.error(err.message)
     res.status(500).send('Server Error!')
