@@ -3,6 +3,7 @@ const express = require('express')
 const Material = require('../models/Material')
 const router = express.Router()
 
+// Add material POST route
 router.post('/add', async (req, res) => {
   const { materialName, materialType } = req.body
   if (!materialName || !materialType) {
@@ -31,6 +32,7 @@ router.post('/add', async (req, res) => {
   }
 })
 
+// Show single material GET route
 router.get('/:id', async (req, res) => {
   const id = req.params.id
   if (!id) {
@@ -50,6 +52,7 @@ router.get('/:id', async (req, res) => {
 
 })
 
+// Show materials by their type GET route
 router.get('/type/:type', async(req, res) => {
   const matType = req.params.type
   if (!matType) {
@@ -60,15 +63,15 @@ router.get('/type/:type', async(req, res) => {
     if (!type.length) {  
       return res.status(404).json({ message: 'Type does NOT exist!'})
     }
-    let mat = {}
+    let material = {}
     for (let i = 0; i < type.length; i++) {
-      mat[i+1] = {
+      material[i+1] = {
         name: type[i].materialName
       }
     }
     res.json({
       type: matType,
-      mat
+      material
     })
   } catch (err) {
     console.error(err.message)
@@ -76,20 +79,21 @@ router.get('/type/:type', async(req, res) => {
   }
 })
 
+// Show ALL materials GET route
 router.get('/', async (req, res) => {
   try {
     let materials = await Material.find()
     if (!materials.length) {  
       return res.status(404).json({ message: 'There is no data!'})
     }
-    let mat = {}
+    let material = {}
     for (let i = 0; i < materials.length; i++) {
-      mat[i+1] = {
+      material[i+1] = {
         name: materials[i].materialName,
         type: materials[i].materialType
       }
     }
-    res.json(mat)
+    res.json(material)
   } catch (err) {
     console.error(err.message)
     res.status(500).send('Server Error!')
