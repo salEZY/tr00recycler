@@ -66,7 +66,6 @@ router.get("/type/:type", async (req, res) => {
     let material = [];
     type.forEach((t) => material.push(t.materialName));
     res.json({
-      type: matType,
       material,
     });
   } catch (err) {

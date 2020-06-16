@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import Buttons from "./Buttons";
 
 const Main = ({ data }) => {
+  const [materialByType, setMaterialByType] = useState([]);
+
   return (
     <>
-      {data.map((el) => (
-        <p key={el._id}>
-          {el.materialName} - {el.materialType}
-        </p>
+      <Buttons data={data} setMaterialByType={setMaterialByType} />
+      {materialByType.map((el) => (
+        <p key={el}>{el}</p>
       ))}
     </>
   );
