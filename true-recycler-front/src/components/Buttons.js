@@ -10,6 +10,7 @@ const Buttons = ({ data, setMaterialByType }) => {
 
   return (
     <>
+      Search materials by type
       {uniq.map((el) => (
         <Button key={el} name={el} setMaterialByType={setMaterialByType} />
       ))}
