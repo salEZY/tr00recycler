@@ -33,18 +33,19 @@ router.post("/add", async (req, res) => {
 });
 
 // Show single material GET route
-router.get("/:id", async (req, res) => {
-  const id = req.params.id;
-  if (!id) {
+router.get("/:name", async (req, res) => {
+  let name = req.params.name;
+  if (!name) {
     return res.status(404).json({ message: "No material provided!" });
   }
 
+  //let upperCased = name.charAt(0).toUpperCase();
   try {
-    let material = await Material.findById({ _id: id });
+    let material = await Material.findOne({ materialName: name });
     if (!material) {
       return res.status(404).json({ message: "No material found" });
     }
-    res.send(`${material.materialName} goes to ${material.materialType} bin!`);
+    res.json({ material });
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error!");
@@ -62,12 +63,8 @@ router.get("/type/:type", async (req, res) => {
     if (!type.length) {
       return res.status(404).json({ message: "Type does NOT exist!" });
     }
-    let material = {};
-    for (let i = 0; i < type.length; i++) {
-      material[i + 1] = {
-        name: type[i].materialName,
-      };
-    }
+    let material = [];
+    type.forEach((t) => material.push(t.materialName));
     res.json({
       type: matType,
       material,
