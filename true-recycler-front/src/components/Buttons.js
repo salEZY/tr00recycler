@@ -14,7 +14,14 @@ const Buttons = ({ data, setMaterialByType, setFilteredMaterial }) => {
 
   return (
     <>
-      <h3>Search materials by type</h3>
+      <h3>
+        Search materials by type
+        <i
+          className="fa fa-search"
+          aria-hidden="true"
+          style={{ marginLeft: "10px" }}
+        ></i>
+      </h3>
       {uniq.map((el) => (
         <Button
           key={el}
@@ -23,9 +30,11 @@ const Buttons = ({ data, setMaterialByType, setFilteredMaterial }) => {
           setFilteredMaterial={setFilteredMaterial}
         />
       ))}
-      <button className="btn" onClick={resetHandler}>
-        Reset
-      </button>
+      <i
+        className="fa fa-times delete"
+        aria-hidden="true"
+        onClick={resetHandler}
+      ></i>
     </>
   );
 };

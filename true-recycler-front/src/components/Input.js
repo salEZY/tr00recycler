@@ -18,7 +18,14 @@ const Input = ({ data, setFilteredMaterial, setMaterialByType }) => {
 
   return (
     <>
-      <h3>Search by name(minimum 3 characters)</h3>
+      <h3>
+        Search by name(minimum 3 characters)
+        <i
+          className="fa fa-search"
+          aria-hidden="true"
+          style={{ marginLeft: "10px" }}
+        ></i>
+      </h3>
       <input type="text" className="input" onChange={filterHandler} />
     </>
   );

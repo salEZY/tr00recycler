@@ -11,7 +11,9 @@
   transition: all 0.15s ease-in-out;
 }
 
-.btn:hover {
-  border: 1px solid #026928;
-  background-color: #026928;
+.delete {
+  font-size: 2rem;
+  color: darkred;
+  margin-left: 10px;
+  cursor: pointer;
 }
