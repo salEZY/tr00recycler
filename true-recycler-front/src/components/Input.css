@@ -1,13 +1,8 @@
-label {
-  display: block;
-  padding: 10px;
-}
-
 .input {
   width: 30%;
   height: 40px;
   padding: 5px;
-  margin: 20px;
+  margin-bottom: 20px;
   border: 2px solid #026928;
   border-radius: 2em / 5em;
   outline: none;

@@ -5,6 +5,7 @@ const Header = () => {
     <>
       <header>
         <h1>Tr0oReCyClEr</h1>
+        {/* <button className="btn">LOGIN</button> */}
       </header>
     </>
   );
