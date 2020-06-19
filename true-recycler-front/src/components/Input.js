@@ -5,7 +5,7 @@ import "./Input.css";
 const Input = ({ data, setFilteredMaterial, setMaterialByType }) => {
   const filterHandler = (e) => {
     setMaterialByType([]);
-    if (e.target.value.length < 3) {
+    if (e.target.value.length < 2) {
       setFilteredMaterial([]);
       return;
     } else {
@@ -19,7 +19,7 @@ const Input = ({ data, setFilteredMaterial, setMaterialByType }) => {
   return (
     <>
       <h3>
-        Search by name(minimum 3 characters)
+        Search by name(minimum 2 characters)
         <i
           className="fa fa-search"
           aria-hidden="true"

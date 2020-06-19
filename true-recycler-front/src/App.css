@@ -16,10 +16,10 @@ body {
 header,
 footer {
   width: 100%;
-  height: 100px;
+  height: 7.5vh;
   background-color: #026928;
   background-image: linear-gradient(to right, #026928, #04c24a);
-  padding: 1.5rem;
+  padding: 0.5rem;
   color: white;
 }
 
@@ -34,7 +34,7 @@ footer {
 
 main {
   width: 80%;
-  min-height: 80vh;
+  min-height: 79.7vh;
   margin: 0 auto;
   padding-bottom: 100px;
 }
