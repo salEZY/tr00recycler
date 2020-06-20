@@ -1,38 +1,18 @@
 import React from "react";
 
 import "./MaterialItem.css";
+import { iconPick } from "../util/iconPicker";
 
 const MaterialItem = ({ name, type }) => {
-  let icon;
-  switch (type) {
-    case "Paper":
-      icon = "fa fa-paper-plane-o";
-      break;
-    case "General":
-      icon = "fa fa-trash-o";
-      break;
-    case "Plastic":
-      icon = "fa fa-compact-disc";
-      break;
-    case "Glass":
-      icon = "fa fa-glass";
-      break;
-    case "Lightning-waste":
-      icon = "fa fa-bolt";
-      break;
-    case "Metal":
-      icon = "fa fa-cogs";
-      break;
-    case "E-waste":
-      icon = "fa fa-laptop";
-      break;
-    default:
-      break;
-  }
+  let icon = iconPick(type);
+
   return (
-    <p className="mat-item">
-      {name} <i className={icon}></i>
-    </p>
+    <div className="mat-item">
+      <p>Name: {name}</p>
+      <p>
+        Type: <i className={icon} aria-hidden="true"></i>
+      </p>
+    </div>
   );
 };
 
