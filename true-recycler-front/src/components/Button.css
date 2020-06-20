@@ -22,3 +22,20 @@
   margin-left: 10px;
   cursor: pointer;
 }
+
+.auth {
+  font-size: 1.2rem;
+  width: 6rem;
+  padding: 5px;
+  border: 2px solid white;
+  border-radius: 2em / 4em;
+  outline: none;
+  cursor: pointer;
+  color: white;
+  background-color: #026928;
+  transition: all 0.15s ease-in-out;
+}
+
+.auth:hover {
+  background-color: #039b3b;
+}

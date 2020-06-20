@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "./Button";
 
-const Buttons = ({ data, setMaterialByType, setFilteredMaterial }) => {
+const Buttons = ({ data, setMaterialByType, setFilteredMaterial, setType }) => {
   let types = [];
   for (const el of data) {
     types.push(el.materialType);
@@ -28,6 +28,7 @@ const Buttons = ({ data, setMaterialByType, setFilteredMaterial }) => {
           name={el}
           setMaterialByType={setMaterialByType}
           setFilteredMaterial={setFilteredMaterial}
+          setType={setType}
         />
       ))}
       <i

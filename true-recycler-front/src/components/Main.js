@@ -1,17 +1,21 @@
 import React, { useState } from "react";
 import Buttons from "./Buttons";
 import Input from "./Input";
+import MaterialItem from "./MaterialItem";
 
 const Main = ({ data }) => {
   const [materialByType, setMaterialByType] = useState([]);
   const [filteredMaterial, setFilteredMaterial] = useState([]);
+  const [type, setType] = useState("");
 
+  console.log(materialByType);
   return (
     <main>
       <Buttons
         data={data}
         setMaterialByType={setMaterialByType}
         setFilteredMaterial={setFilteredMaterial}
+        setType={setType}
       />
       <Input
         data={data}
@@ -20,10 +24,14 @@ const Main = ({ data }) => {
       />
       <div className="materials-list">
         {materialByType.map((el) => (
-          <p key={el}>{el}</p>
+          <MaterialItem key={el} name={el} type={type} />
         ))}
         {filteredMaterial.map((el) => (
-          <p key={el._id}>{el.materialName}</p>
+          <MaterialItem
+            key={el._id}
+            name={el.materialName}
+            type={el.materialType}
+          />
         ))}
       </div>
     </main>
