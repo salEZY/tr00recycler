@@ -44,3 +44,10 @@ main {
 h3 {
   margin: 10px auto;
 }
+
+.materials-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
