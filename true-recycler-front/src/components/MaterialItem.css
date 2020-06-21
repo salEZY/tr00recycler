@@ -6,3 +6,21 @@
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
 }
+
+@media screen and (max-width: 992px) {
+  .mat-item {
+    width: 40%;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1197px) {
+  .mat-item {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .mat-item {
+    width: 90%;
+  }
+}

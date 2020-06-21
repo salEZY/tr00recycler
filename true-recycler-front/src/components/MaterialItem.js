@@ -8,9 +8,9 @@ const MaterialItem = ({ name, type }) => {
 
   return (
     <div className="mat-item">
-      <p>Name: {name}</p>
+      <p>{name}</p>
       <p>
-        Type: <i className={icon} aria-hidden="true"></i>
+        Type: <i className={icon} aria-hidden="true" title={type}></i>
       </p>
     </div>
   );

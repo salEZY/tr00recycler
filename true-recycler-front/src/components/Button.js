@@ -17,7 +17,7 @@ const Button = ({ name, setMaterialByType, setFilteredMaterial, setType }) => {
 
   return (
     <>
-      <button className="btn" onClick={getDataByTypeHandler}>
+      <button className="btn" onClick={getDataByTypeHandler} title={name}>
         {name} <i className={icon} aria-hidden="true"></i>
       </button>
     </>

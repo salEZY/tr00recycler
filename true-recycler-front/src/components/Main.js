@@ -8,7 +8,6 @@ const Main = ({ data }) => {
   const [filteredMaterial, setFilteredMaterial] = useState([]);
   const [type, setType] = useState("");
 
-  console.log(materialByType);
   return (
     <main>
       <Buttons
