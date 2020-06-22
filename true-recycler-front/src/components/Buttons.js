@@ -35,6 +35,7 @@ const Buttons = ({ data, setMaterialByType, setFilteredMaterial, setType }) => {
         className="fa fa-times delete"
         aria-hidden="true"
         onClick={resetHandler}
+        title="Reset search"
       ></i>
     </>
   );

@@ -1,9 +1,15 @@
 .input {
-  width: 30%;
+  width: 45%;
   height: 40px;
   padding: 5px;
   margin-bottom: 20px;
   border: 3px solid #026928;
   border-radius: 2em / 4em;
   outline: none;
+}
+
+@media screen and (max-width: 768px) {
+  .input {
+    width: 90%;
+  }
 }

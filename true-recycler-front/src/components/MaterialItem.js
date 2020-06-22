@@ -8,7 +8,7 @@ const MaterialItem = ({ name, type }) => {
 
   return (
     <div className="mat-item">
-      <p>{name}</p>
+      <h4>{name}</h4>
       <p>
         Type: <i className={icon} aria-hidden="true" title={type}></i>
       </p>
