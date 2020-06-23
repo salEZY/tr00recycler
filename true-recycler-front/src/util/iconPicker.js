@@ -2,7 +2,7 @@ export const iconPick = (type) => {
   let icon;
   switch (type) {
     case "Paper":
-      icon = "fa fa-paper-plane-o";
+      icon = "fa fa-toilet-paper";
       break;
     case "General":
       icon = "fa fa-trash-o";
@@ -11,13 +11,13 @@ export const iconPick = (type) => {
       icon = "fa fa-compact-disc";
       break;
     case "Glass":
-      icon = "fa fa-glass";
+      icon = "fa fa-wine-bottle";
       break;
     case "Lightning-waste":
       icon = "fa fa-bolt";
       break;
     case "Metal":
-      icon = "fa fa-cogs";
+      icon = "fa fa-cog";
       break;
     case "E-waste":
       icon = "fa fa-laptop";

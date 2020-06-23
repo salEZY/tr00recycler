@@ -5,20 +5,23 @@ import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Main from "./components/Main";
+import Loader from "./components/Loader";
 
 function App() {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios.get("/api/materials/").then((res) => {
       setData(res.data);
+      setLoading(false);
     });
   }, []);
 
   return (
     <>
       <Header />
-      <Main data={data} />
+      {loading ? <Loader /> : <Main data={data} />}
       <Footer />
     </>
   );

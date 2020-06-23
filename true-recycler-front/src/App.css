@@ -41,6 +41,13 @@ main {
   padding: 7.5vh 10px;
 }
 
+h1 {
+  padding-top: 5px;
+  font-family: "impact";
+  letter-spacing: 5px;
+  font-size: 3rem;
+}
+
 h3 {
   margin: 10px auto;
 }

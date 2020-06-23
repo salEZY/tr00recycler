@@ -25,6 +25,7 @@ const Main = ({ data }) => {
         {materialByType.map((el) => (
           <MaterialItem key={el} name={el} type={type} />
         ))}
+
         {filteredMaterial.map((el) => (
           <MaterialItem
             key={el._id}
