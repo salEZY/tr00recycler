@@ -4,7 +4,13 @@ import { iconPick } from "../util/iconPicker";
 
 import "./Button.css";
 
-const Button = ({ name, setMaterialByType, setFilteredMaterial, setType }) => {
+const Button = ({
+  name,
+  setMaterialByType,
+  setFilteredMaterial,
+  setType,
+  setLoaded,
+}) => {
   let icon = iconPick(name);
 
   const getDataByTypeHandler = () => {
@@ -12,6 +18,7 @@ const Button = ({ name, setMaterialByType, setFilteredMaterial, setType }) => {
       setMaterialByType(res.data.material);
       setType(name);
       setFilteredMaterial([]);
+      setLoaded(false);
     });
   };
 

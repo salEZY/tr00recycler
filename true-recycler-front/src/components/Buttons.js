@@ -1,7 +1,13 @@
 import React from "react";
 import Button from "./Button";
 
-const Buttons = ({ data, setMaterialByType, setFilteredMaterial, setType }) => {
+const Buttons = ({
+  data,
+  setMaterialByType,
+  setFilteredMaterial,
+  setType,
+  setLoaded,
+}) => {
   let types = [];
   for (const el of data) {
     types.push(el.materialType);
@@ -10,10 +16,11 @@ const Buttons = ({ data, setMaterialByType, setFilteredMaterial, setType }) => {
 
   const resetHandler = () => {
     setMaterialByType([]);
+    setLoaded(true);
   };
 
   return (
-    <>
+    <div style={{ margin: "30px auto" }}>
       <h3>
         Search materials by type
         <i
@@ -29,6 +36,7 @@ const Buttons = ({ data, setMaterialByType, setFilteredMaterial, setType }) => {
           setMaterialByType={setMaterialByType}
           setFilteredMaterial={setFilteredMaterial}
           setType={setType}
+          setLoaded={setLoaded}
         />
       ))}
       <i
@@ -37,7 +45,7 @@ const Buttons = ({ data, setMaterialByType, setFilteredMaterial, setType }) => {
         onClick={resetHandler}
         title="Reset search"
       ></i>
-    </>
+    </div>
   );
 };
 

@@ -2,22 +2,24 @@ import React from "react";
 
 import "./Input.css";
 
-const Input = ({ data, setFilteredMaterial, setMaterialByType }) => {
+const Input = ({ data, setFilteredMaterial, setMaterialByType, setLoaded }) => {
   const filterHandler = (e) => {
     setMaterialByType([]);
     if (e.target.value.length < 2) {
       setFilteredMaterial([]);
+      setLoaded(true);
       return;
     } else {
       let filtered = data.filter((el) =>
         el.materialName.toLowerCase().includes(e.target.value)
       );
       setFilteredMaterial(filtered);
+      setLoaded(false);
     }
   };
 
   return (
-    <>
+    <div className="input-div">
       <h3>
         Search by name(minimum 2 characters)
         <i
@@ -27,7 +29,7 @@ const Input = ({ data, setFilteredMaterial, setMaterialByType }) => {
         ></i>
       </h3>
       <input type="text" className="input" onChange={filterHandler} />
-    </>
+    </div>
   );
 };
 
