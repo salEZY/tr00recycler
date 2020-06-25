@@ -4,7 +4,9 @@ import axios from "axios";
 import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Intro from "./components/Intro";
 import Main from "./components/Main";
+import ToTopBtn from "./components/ToTopBtn";
 import Loader from "./components/Loader";
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
   return (
     <>
       <Header />
+      <ToTopBtn />
+      <Intro />
       {loading ? <Loader /> : <Main data={data} />}
       <Footer />
     </>

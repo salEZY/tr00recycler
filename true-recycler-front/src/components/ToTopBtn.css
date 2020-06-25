@@ -1,0 +1,21 @@
+#to-top-btn {
+  cursor: pointer;
+  height: 60px;
+  width: 60px;
+  font-size: 40px;
+  position: fixed;
+  right: 25px;
+  bottom: 7.5%;
+  z-index: 10;
+  color: white;
+  background-color: #04c24a;
+  border: 2px solid #04c24a;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  transition: all 0.2s ease-in-out;
+}
+
+#to-top-btn:hover {
+  color: #04c24a;
+  background-color: white;
+}

@@ -1,0 +1,56 @@
+.intro {
+  min-height: 92.5vh;
+  padding: 2rem 1px;
+}
+
+.intro h2 {
+  font-size: 3rem;
+}
+
+.intro p {
+  margin: 20px auto;
+  width: 80%;
+  font-size: 1.1rem;
+}
+
+.intro-btn {
+  font-size: 2rem;
+  width: 20%;
+  background-color: white;
+  margin-top: 20px;
+  padding: 10px;
+  border: 2px solid #026928;
+  color: #026928;
+  border-radius: 2em/4em;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  outline: none;
+}
+
+.intro-btn:hover {
+  background-color: #026928;
+  color: white;
+}
+
+.img-holder {
+  height: 337px;
+  margin: 3rem auto;
+  background-color: #026928;
+  animation: colorchange linear 5s infinite;
+}
+@keyframes colorchange {
+  0% {
+    background-color: #026928;
+  }
+  50% {
+    background-color: #04c24a;
+  }
+  100% {
+    background-color: #026928;
+  }
+}
+
+.img-holder img {
+  height: 100%;
+  border-radius: 1.5em/5em;
+}
