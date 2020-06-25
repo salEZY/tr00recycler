@@ -37,7 +37,7 @@ const Main = ({ data }) => {
       />
       <div className="materials-list">
         {loaded ? (
-          <p style={{ fontSize: "1.5rem" }}>Start searching{dots}</p>
+          <h2>Start searching{dots}</h2>
         ) : (
           <>
             {materialByType.map((el) => (

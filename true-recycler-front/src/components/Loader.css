@@ -5,7 +5,7 @@
 
 .loader {
   margin: 250px auto;
-  border: 10px solid #f3f3f3;
+  border: 10px dashed #f3f3f3;
   border-top: 10px solid #026928;
   border-radius: 50%;
   width: 100px;
@@ -20,9 +20,4 @@
   100% {
     transform: rotate(360deg);
   }
-}
-
-.loader i {
-  padding-top: 20px;
-  font-size: 40px;
 }

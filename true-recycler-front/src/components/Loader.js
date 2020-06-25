@@ -4,8 +4,6 @@ import "./Loader.css";
 
 export default () => (
   <div className="loader-parent">
-    <div className="loader">
-      <i className="fa fa-recycle" aria-hidden="true"></i>
-    </div>
+    <div className="loader"></div>
   </div>
 );

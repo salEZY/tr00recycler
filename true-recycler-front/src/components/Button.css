@@ -25,7 +25,7 @@
 
 .auth {
   font-size: 1rem;
-  width: 5rem;
+  padding: 5px;
   height: 45px;
   margin-top: 5px;
   border: 2px solid white;
