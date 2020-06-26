@@ -22,7 +22,13 @@ const Intro = ({ myRef }) => {
       <div className="img-holder">
         <img src={require("../assets/recycling-bins.png")} alt="bins"></img>
       </div>
-      <button className="intro-btn">
+      <button
+        className="intro-btn"
+        onClick={() => {
+          document.body.scrollTop = document.body.scrollHeight;
+          document.documentElement.scrollTop = document.body.scrollHeight;
+        }}
+      >
         Get started <i class="fas fa-arrow-alt-circle-down"></i>
       </button>
     </div>

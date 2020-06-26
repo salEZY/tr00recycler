@@ -16,6 +16,6 @@
 }
 
 #to-top-btn:hover {
-  color: #04c24a;
-  background-color: white;
+  background-color: #026928;
+  border: 2px solid #026928;
 }

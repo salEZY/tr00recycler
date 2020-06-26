@@ -15,7 +15,7 @@ const ToTopButton = () => {
   };
 
   window.onscroll = () => {
-    window.scrollY > 600 ? showBtn("block") : showBtn("none");
+    window.scrollY > 550 ? showBtn("block") : showBtn("none");
   };
 
   return (
