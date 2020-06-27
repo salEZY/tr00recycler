@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./MaterialItem.css";
-import { iconPick } from "../util/iconPicker";
+import { iconPick } from "../../util/iconPicker";
 
 const MaterialItem = ({ name, type }) => {
   let icon = iconPick(type);

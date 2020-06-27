@@ -1,6 +1,6 @@
 .intro {
   min-height: 92.5vh;
-  padding: 2rem 1px;
+  padding: 2rem 0.1px;
 }
 
 .intro h2 {
@@ -55,6 +55,12 @@
   border-radius: 1.5em/5em;
 }
 
+.small {
+  display: none;
+  border-radius: 1.5em/5em;
+  background-color: white;
+}
+
 @media screen and (max-width: 1199px) {
   .intro-btn {
     width: 50%;
@@ -64,5 +70,19 @@
 @media screen and (max-width: 768px) {
   .intro-btn {
     width: 90%;
+  }
+  .img-holder img {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .small {
+    display: block;
+    width: 70%;
+  }
+  .normal {
+    display: none;
   }
 }

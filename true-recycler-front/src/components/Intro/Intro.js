@@ -3,6 +3,7 @@ import React from "react";
 import "./Intro.css";
 
 const Intro = ({ myRef }) => {
+  console.log(document.documentElement.clientWidth);
   return (
     <div className="intro">
       <h2>Discover where recyclable materials go!</h2>
@@ -20,7 +21,16 @@ const Intro = ({ myRef }) => {
         playground equipment!
       </p>
       <div className="img-holder">
-        <img src={require("../assets/recycling-bins.png")} alt="bins"></img>
+        <img
+          src={require("../../assets/bins-small.png")}
+          alt="bins"
+          className="small"
+        ></img>
+        <img
+          src={require("../../assets/recycling-bins.png")}
+          alt="bins"
+          className="normal"
+        ></img>
       </div>
       <button
         className="intro-btn"
@@ -29,7 +39,7 @@ const Intro = ({ myRef }) => {
           document.documentElement.scrollTop = document.body.scrollHeight;
         }}
       >
-        Get started <i class="fas fa-arrow-alt-circle-down"></i>
+        Get started <i className="fas fa-arrow-alt-circle-down"></i>
       </button>
     </div>
   );

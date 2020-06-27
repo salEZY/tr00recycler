@@ -2,8 +2,15 @@ import React from "react";
 
 import "./Input.css";
 
-const Input = ({ data, setFilteredMaterial, setMaterialByType, setLoaded }) => {
+const Input = ({
+  data,
+  setFilteredMaterial,
+  setMaterialByType,
+  setLoaded,
+  setLength,
+}) => {
   const filterHandler = (e) => {
+    setLength(e.target.value.length);
     setMaterialByType([]);
     if (e.target.value.length < 2) {
       setFilteredMaterial([]);

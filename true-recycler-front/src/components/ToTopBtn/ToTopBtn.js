@@ -27,7 +27,7 @@ const ToTopButton = () => {
         document.documentElement.scrollTop = 0;
       }}
     >
-      <i class="fa fa-angle-up" aria-hidden="true"></i>
+      <i className="fa fa-angle-up" aria-hidden="true"></i>
     </span>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "./Button";
+import Button from "./Button/Button";
 
 const Buttons = ({
   data,
@@ -7,6 +7,7 @@ const Buttons = ({
   setFilteredMaterial,
   setType,
   setLoaded,
+  setLength,
 }) => {
   let types = [];
   for (const el of data) {
@@ -29,14 +30,15 @@ const Buttons = ({
           style={{ marginLeft: "10px" }}
         ></i>
       </h3>
-      {uniq.map((el) => (
+      {uniq.map((type) => (
         <Button
-          key={el}
-          name={el}
+          key={type}
+          name={type}
           setMaterialByType={setMaterialByType}
           setFilteredMaterial={setFilteredMaterial}
           setType={setType}
           setLoaded={setLoaded}
+          setLength={setLength}
         />
       ))}
       <i
