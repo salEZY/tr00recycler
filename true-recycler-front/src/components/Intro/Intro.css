@@ -5,12 +5,18 @@
 
 .intro h2 {
   font-size: 3rem;
+  font-family: Tahoma, Helvetica, Arial, Sans-Serif;
+  background: -webkit-linear-gradient(#026928, #04c24a);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .intro p {
   margin: 20px auto;
   width: 80%;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  font-family: "Myriad Pro", "sans-serif";
+  font-weight: bold;
 }
 
 .intro-btn {
@@ -72,15 +78,17 @@
     width: 90%;
   }
   .img-holder img {
-    width: 80%;
+    width: 85%;
     margin: 0 auto;
+  }
+  .intro h2 {
+    font-size: 2rem;
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .small {
     display: block;
-    width: 70%;
   }
   .normal {
     display: none;

@@ -73,7 +73,7 @@ header a {
 
 @media screen and (max-width: 767px) {
   main {
-    width: 95%;
+    width: 100%;
   }
 }
 
