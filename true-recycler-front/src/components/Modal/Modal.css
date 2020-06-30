@@ -6,7 +6,6 @@
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-color: #026928;
-  padding: 2rem;
   display: flex;
   align-items: center;
 }
@@ -14,6 +13,9 @@
 .modal {
   width: 60%;
   height: 60%;
+  position: absolute;
+  left: 20%;
+  bottom: 20%;
   margin: 0 auto;
   border: 3px solid #026928;
   border-radius: 2em 1em 4em / 0.5em 3em;
@@ -32,5 +34,18 @@
 @media screen and (max-width: 767px) {
   .modal-holder {
     background-image: url("../../assets/recycling-small.jpg");
+    background-size: 200% 80%;
+    background-color: #ecf6eb;
+    background-position: center;
+    padding: 0;
+  }
+  .modal {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .modal-holder {
+    background-size: 300% 75%;
   }
 }

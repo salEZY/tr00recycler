@@ -6,13 +6,14 @@ import "./Modal.css";
 
 const Modal = ({ setModal }) => {
   return (
-    <div className="modal-holder">
+    <>
+      <div className="modal-holder"></div>
       <div className="modal">
         <Form name="Login" />
         <Form name="Register" register={true} />
         <span onClick={() => setModal(false)}>X</span>
       </div>
-    </div>
+    </>
   );
 };
 

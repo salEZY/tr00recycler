@@ -6,8 +6,15 @@ const Form = ({ name, register, onSubmiHandler }) => {
   return (
     <form method="POST" onSubmit={onSubmiHandler}>
       <h3>{name}</h3>
-      <input type="email" name="email" placeholder="Email" required></input>
       <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        className="form-input"
+        required
+      ></input>
+      <input
+        className="form-input"
         type="password"
         name="password"
         placeholder="Password"
@@ -16,15 +23,20 @@ const Form = ({ name, register, onSubmiHandler }) => {
       {register ? (
         <>
           <input
+            className="form-input"
             type="password"
             name="repeatPassword"
             placeholder="Repeat password"
             required
           ></input>
-          <button>Sign Up</button>
+          <button className="auth">
+            Sign Up <i class="fa fa-user-plus" aria-hidden="true"></i>
+          </button>
         </>
       ) : (
-        <button>Login</button>
+        <button className="auth">
+          Login <i class="fa fa-sign-in" aria-hidden="true"></i>
+        </button>
       )}
     </form>
   );
