@@ -28,7 +28,7 @@ const Input = ({
   return (
     <div className="input-div">
       <h3>
-        Search by name(minimum 2 characters)
+        Search materials by name(minimum 2 characters)
         <i
           className="fa fa-search"
           aria-hidden="true"

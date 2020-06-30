@@ -6,12 +6,14 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Intro from "./components/Intro/Intro";
 import Main from "./components/Main";
+import Modal from "./components/Modal/Modal";
 import ToTopBtn from "./components/ToTopBtn/ToTopBtn";
 import Loader from "./components/Loader/Loader";
 
 function App() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [modal, setModal] = useState(false);
 
   useEffect(() => {
     axios.get("/api/materials/").then((res) => {
@@ -22,11 +24,17 @@ function App() {
 
   return (
     <>
-      <Header />
       <ToTopBtn />
-      <Intro />
-      {loading ? <Loader /> : <Main data={data} />}
-      <Footer />
+      {modal ? (
+        <Modal setModal={setModal} />
+      ) : (
+        <>
+          <Header setModal={setModal} />
+          <Intro />
+          {loading ? <Loader /> : <Main data={data} />}
+          <Footer />
+        </>
+      )}
     </>
   );
 }

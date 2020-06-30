@@ -1,6 +1,6 @@
 import React from "react";
 
-const Header = () => {
+const Header = ({ setModal }) => {
   return (
     <>
       <header>
@@ -9,7 +9,7 @@ const Header = () => {
             Tr00<i className="fa fa-recycle" aria-hidden="true"></i>R
           </h1>
         </a>
-        <button className="auth">
+        <button className="auth" onClick={() => setModal(true)}>
           Authenticate<i className="fa fa-sign-in" aria-hidden="true"></i>
         </button>
       </header>

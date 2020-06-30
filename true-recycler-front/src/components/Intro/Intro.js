@@ -3,7 +3,6 @@ import React from "react";
 import "./Intro.css";
 
 const Intro = ({ myRef }) => {
-  console.log(document.documentElement.clientWidth);
   return (
     <div className="intro">
       <h2>Discover where recyclable materials go!</h2>

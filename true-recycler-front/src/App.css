@@ -43,7 +43,7 @@ main {
 }
 
 h1 {
-  padding-top: 5px;
+  padding-top: 3%;
   font-family: "impact";
   letter-spacing: 5px;
   font-size: 3rem;
@@ -80,6 +80,6 @@ header a {
 @media screen and (max-width: 500px) {
   h1 {
     font-size: 2rem;
-    padding-top: 25px;
+    padding-top: 17%;
   }
 }

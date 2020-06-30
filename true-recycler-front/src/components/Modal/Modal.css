@@ -1,0 +1,30 @@
+.modal-holder {
+  z-index: 100;
+  width: 100%;
+  height: 100vh;
+  background-image: url("../../assets/recycling.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-color: #026928;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.modal {
+  width: 60%;
+  height: 60%;
+  margin: 0 auto;
+  border: 3px solid #026928;
+  border-radius: 2em 1em 4em / 0.5em 3em;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: white;
+  opacity: 0.9;
+}
+
+.modal form {
+  width: 50%;
+}
