@@ -16,6 +16,7 @@ app.get("/api", (req, res) => {
 });
 
 app.use("/api/materials/", require("./routes/materials"));
+app.use("/api/auth/", require("./routes/users"));
 
 app.listen(port, () => {
   console.log(`TrueRecycler server started at port ${port}`);

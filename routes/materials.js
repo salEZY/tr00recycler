@@ -25,7 +25,7 @@ router.post("/add", async (req, res) => {
     material = new Material(newMaterial);
 
     await material.save();
-    res.send(`${material.materialName} is added!`);
+    res.json(material);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error!");
@@ -45,7 +45,7 @@ router.get("/:name", async (req, res) => {
     if (!material) {
       return res.status(404).json({ message: "No material found" });
     }
-    res.json({ material });
+    res.json(material);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error!");
