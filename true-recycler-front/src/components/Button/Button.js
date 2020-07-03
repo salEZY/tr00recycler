@@ -1,32 +1,15 @@
 import React from "react";
-import axios from "axios";
+
 import { iconPick } from "../../util/iconPicker";
 
 import "./Button.css";
 
-const Button = ({
-  name,
-  setMaterialByType,
-  setFilteredMaterial,
-  setType,
-  setLoaded,
-  setLength,
-}) => {
+const Button = ({ name, onClickHandler }) => {
   let icon = iconPick(name);
-
-  const getDataByTypeHandler = () => {
-    axios.get(`/api/materials/type/${name}`).then((res) => {
-      setMaterialByType(res.data.material);
-      setType(name);
-      setLength(0);
-      setFilteredMaterial([]);
-      setLoaded(false);
-    });
-  };
 
   return (
     <>
-      <button className="btn" onClick={getDataByTypeHandler} title={name}>
+      <button className="btn" onClick={() => onClickHandler(name)} title={name}>
         {name} <i className={icon} aria-hidden="true"></i>
       </button>
     </>

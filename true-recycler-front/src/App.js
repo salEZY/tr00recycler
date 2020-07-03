@@ -38,12 +38,10 @@ function App() {
       {modal ? (
         <CSSTransition
           in={modal}
-          timeout={500}
+          timeout={200}
           classNames="show"
           mountOnEnter
           unmountOnExit
-          onEnter={() => setModal(false)}
-          onExited={() => setModal(true)}
         >
           <Modal hide={hideModal} />
         </CSSTransition>

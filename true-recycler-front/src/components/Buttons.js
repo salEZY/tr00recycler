@@ -1,4 +1,6 @@
 import React from "react";
+import axios from "axios";
+
 import Button from "./Button/Button";
 
 const Buttons = ({
@@ -20,6 +22,16 @@ const Buttons = ({
     setLoaded(true);
   };
 
+  const getDataByTypeHandler = (name) => {
+    axios.get(`/api/materials/type/${name}`).then((res) => {
+      setMaterialByType(res.data.material);
+      setType(name);
+      setLength(0);
+      setFilteredMaterial([]);
+      setLoaded(false);
+    });
+  };
+
   return (
     <div style={{ margin: "30px auto" }}>
       <h3>
@@ -31,15 +43,7 @@ const Buttons = ({
         ></i>
       </h3>
       {uniq.map((type) => (
-        <Button
-          key={type}
-          name={type}
-          setMaterialByType={setMaterialByType}
-          setFilteredMaterial={setFilteredMaterial}
-          setType={setType}
-          setLoaded={setLoaded}
-          setLength={setLength}
-        />
+        <Button key={type} name={type} onClickHandler={getDataByTypeHandler} />
       ))}
       <i
         className="fa fa-times delete"

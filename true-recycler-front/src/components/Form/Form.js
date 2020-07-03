@@ -17,7 +17,7 @@ const Form = ({ name, register, onSubmiHandler }) => {
         className="form-input"
         type="password"
         name="password"
-        placeholder="Password"
+        placeholder="Password(minimum length 6 characters.)"
         required
       ></input>
       {register ? (

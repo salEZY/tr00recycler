@@ -10,12 +10,12 @@ const ToTopButton = () => {
     display: ${show};
   `;
 
-  const showBtn = (display) => {
+  const btnHandler = (display) => {
     setShow(display);
   };
 
   window.onscroll = () => {
-    window.scrollY > 700 ? showBtn("block") : showBtn("none");
+    window.scrollY > 700 ? btnHandler("block") : btnHandler("none");
   };
 
   return (
