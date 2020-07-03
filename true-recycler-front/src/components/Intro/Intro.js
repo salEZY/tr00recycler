@@ -19,6 +19,9 @@ const Intro = ({ myRef }) => {
         newspaper and office paper, plastic laundry detergent bottles and even
         playground equipment!
       </p>
+      <p>
+        Create an account and start adding materials missing from the database!
+      </p>
       <div className="img-holder">
         <img
           src={require("../../assets/bins-small.png")}

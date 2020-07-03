@@ -5,7 +5,6 @@
 
 .intro h2 {
   font-size: 3rem;
-  font-family: Tahoma, Helvetica, Arial, Sans-Serif;
   background: -webkit-linear-gradient(#026928, #04c24a);
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -14,8 +13,7 @@
 .intro p {
   margin: 20px auto;
   width: 80%;
-  font-size: 1.2rem;
-  font-family: "Myriad Pro", "sans-serif";
+  font-size: 1rem;
   font-weight: bold;
 }
 
@@ -23,7 +21,6 @@
   font-size: 2rem;
   width: 20%;
   background-color: white;
-  margin-top: 20px;
   padding: 10px;
   border: 2px solid #026928;
   color: #026928;

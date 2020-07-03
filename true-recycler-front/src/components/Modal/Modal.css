@@ -1,7 +1,7 @@
-.modal-holder {
+#modal-holder {
   z-index: 100;
   width: 100%;
-  height: 100vh;
+  height: 85vh;
   background-image: url("../../assets/recycling-small.jpg");
   background-position: center;
   background-size: 80% 80%;
@@ -38,7 +38,7 @@
   right: 10px;
 }
 @media screen and (min-width: 768px) and (max-width: 1200px) {
-  .modal-holder {
+  #modal-holder {
     background-size: 175% 90%;
   }
   .modal {
@@ -48,16 +48,17 @@
 }
 
 @media screen and (max-width: 767px) {
-  .modal-holder {
+  #modal-holder {
     background-size: 200% 80%;
     padding: 0;
   }
   .modal {
-    top: 5%;
-    height: 90%;
-    width: 95%;
-    left: 2.5%;
+    top: 7.5%;
+    height: 85vh;
+    width: 100%;
+    left: 0.01%;
     flex-direction: column;
+    border: none;
   }
   .modal form {
     width: 100%;
@@ -65,7 +66,7 @@
 }
 
 @media screen and (max-width: 550px) {
-  .modal-holder {
+  #modal-holder {
     background-size: 300% 75%;
   }
 }

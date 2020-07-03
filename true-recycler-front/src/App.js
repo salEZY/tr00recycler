@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { CSSTransition } from "react-transition-group";
 
 import "./App.css";
 import Header from "./components/Header";
@@ -22,19 +23,37 @@ function App() {
     });
   }, []);
 
+  const showModal = () => {
+    setModal(true);
+  };
+
+  const hideModal = () => {
+    setModal(false);
+  };
+
   return (
     <>
+      <Header modal={modal} show={showModal} />
       <ToTopBtn />
       {modal ? (
-        <Modal setModal={setModal} />
+        <CSSTransition
+          in={modal}
+          timeout={500}
+          classNames="show"
+          mountOnEnter
+          unmountOnExit
+          onEnter={() => setModal(false)}
+          onExited={() => setModal(true)}
+        >
+          <Modal hide={hideModal} />
+        </CSSTransition>
       ) : (
         <>
-          <Header setModal={setModal} />
           <Intro />
           {loading ? <Loader /> : <Main data={data} />}
-          <Footer />
         </>
       )}
+      <Footer />
     </>
   );
 }

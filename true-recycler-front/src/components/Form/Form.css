@@ -9,7 +9,7 @@ form {
   font-size: 1.3rem;
   padding: 10px;
   margin: 15px auto;
-  width: 80%;
+  width: 85%;
   height: 3rem;
   border: 2px solid #026928;
   border-radius: 2em/4em;
@@ -19,5 +19,27 @@ form {
 form button {
   margin: 0 auto;
   font-size: 2rem;
-  width: 80%;
+  width: 85%;
+}
+
+@media screen and (max-width: 767px) {
+  .form-input,
+  form button {
+    width: 95%;
+  }
+}
+
+.formShow-enter {
+  opacity: 0;
+}
+.formShow-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.formShow-exit {
+  opacity: 1;
+}
+.formShow-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
 }

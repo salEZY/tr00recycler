@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=BioRhyme&family=Open+Sans&display=swap");
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -5,8 +7,11 @@
   scroll-behavior: smooth;
 }
 
+html {
+  font-family: "BioRhyme", serif;
+}
+
 body {
-  font-family: "Raleway", sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   background-color: #fff;
@@ -28,6 +33,11 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+}
+
+header span {
+  font-size: 1.2rem;
+  margin-top: 40px;
 }
 
 footer {
@@ -81,4 +91,19 @@ header a {
     font-size: 2rem;
     padding-top: 17%;
   }
+}
+
+.show-enter {
+  opacity: 0;
+}
+.show-active {
+  opacity: 1;
+  transition: opacity 500ms;
+}
+.show-exit {
+  opacity: 1;
+}
+.show-exit-active {
+  opacity: 0;
+  transition: opacity 500ms;
 }

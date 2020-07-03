@@ -30,12 +30,12 @@ const Form = ({ name, register, onSubmiHandler }) => {
             required
           ></input>
           <button className="auth">
-            Sign Up <i class="fa fa-user-plus" aria-hidden="true"></i>
+            Sign Up <i className="fa fa-user-plus" aria-hidden="true"></i>
           </button>
         </>
       ) : (
         <button className="auth">
-          Login <i class="fa fa-sign-in" aria-hidden="true"></i>
+          Login <i className="fa fa-sign-in" aria-hidden="true"></i>
         </button>
       )}
     </form>

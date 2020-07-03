@@ -4,14 +4,14 @@ import Form from "../Form/Form";
 
 import "./Modal.css";
 
-const Modal = ({ setModal }) => {
+const Modal = ({ hide }) => {
   return (
     <>
-      <div className="modal-holder" onClick={() => setModal(false)}></div>
+      <div id="modal-holder" onClick={hide}></div>
       <div className="modal">
         <Form name="Login" />
         <Form name="Register" register={true} />
-        <span onClick={() => setModal(false)}>
+        <span onClick={hide}>
           <i
             className="fa fa-times delete"
             aria-hidden="true"
