@@ -98,7 +98,7 @@ header a {
 }
 .show-active {
   opacity: 1;
-  transition: opacity 200ms;
+  transition: opacity 200ms linear;
 }
 .show-exit {
   opacity: 1;
