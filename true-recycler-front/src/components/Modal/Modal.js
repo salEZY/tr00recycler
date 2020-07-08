@@ -9,8 +9,8 @@ const Modal = ({ hide }) => {
     <>
       <div id="modal-holder" onClick={hide}></div>
       <div className="modal">
-        <Form name="Login" />
-        <Form name="Register" register={true} />
+        <Form name="login" />
+        <Form name="register" register={true} />
         <span onClick={hide}>
           <i
             className="fa fa-times delete"

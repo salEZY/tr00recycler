@@ -34,7 +34,7 @@ const Buttons = ({
 
   return (
     <div style={{ margin: "30px auto" }}>
-      <h3>
+      <h3 style={{ fontFamily: "Arial" }}>
         Search materials by type
         <i
           className="fa fa-search"

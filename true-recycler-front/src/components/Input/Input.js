@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./Input.css";
 
@@ -9,7 +9,10 @@ const Input = ({
   setLoaded,
   setLength,
 }) => {
+  const [inputText, setInputText] = useState("");
+
   const filterHandler = (e) => {
+    setInputText(e.target.value);
     setLength(e.target.value.length);
     setMaterialByType([]);
     if (e.target.value.length < 2) {
@@ -25,9 +28,14 @@ const Input = ({
     }
   };
 
+  const clearInputHandler = () => {
+    setInputText("");
+    setFilteredMaterial([]);
+  };
+
   return (
     <div className="input-div">
-      <h3>
+      <h3 style={{ fontFamily: "Arial" }}>
         Search materials by name(minimum 2 characters)
         <i
           className="fa fa-search"
@@ -35,7 +43,18 @@ const Input = ({
           style={{ marginLeft: "10px" }}
         ></i>
       </h3>
-      <input type="text" className="input" onChange={filterHandler} />
+      <input
+        type="text"
+        className="input"
+        onChange={filterHandler}
+        value={inputText}
+      />
+      <i
+        className="fas fa-eraser erase"
+        aria-hidden="true"
+        onClick={clearInputHandler}
+        title="Reset input search"
+      ></i>
     </div>
   );
 };

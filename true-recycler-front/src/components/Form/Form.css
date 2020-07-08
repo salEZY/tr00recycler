@@ -17,9 +17,16 @@ form {
 }
 
 form button {
-  margin: 0 auto;
+  margin: 10px auto;
   font-size: 2rem;
   width: 85%;
+}
+
+.error {
+  font-size: 1.1rem;
+  color: crimson;
+  margin-top: 10px;
+  font-family: Arial;
 }
 
 @media screen and (max-width: 767px) {
@@ -27,19 +34,8 @@ form button {
   form button {
     width: 95%;
   }
-}
 
-.formShow-enter {
-  opacity: 0;
-}
-.formShow-enter-active {
-  opacity: 1;
-  transition: opacity 200ms;
-}
-.formShow-exit {
-  opacity: 1;
-}
-.formShow-exit-active {
-  opacity: 0;
-  transition: opacity 200ms;
+  .error {
+    font-size: 1rem;
+  }
 }

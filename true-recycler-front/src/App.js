@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { CSSTransition } from "react-transition-group";
+import { Transition } from "react-spring/renderprops";
 
 import "./App.css";
 import Header from "./components/Header";
@@ -36,15 +36,22 @@ function App() {
       <Header modal={modal} show={showModal} />
       <ToTopBtn />
       {modal ? (
-        <CSSTransition
-          in={modal}
-          timeout={200}
-          classNames="show"
-          mountOnEnter
-          unmountOnExit
+        <Transition
+          items={modal}
+          from={{ opacity: 0 }}
+          enter={{ opacity: 1 }}
+          leave={{ opacity: 0 }}
+          trail={250}
         >
-          <Modal hide={hideModal} />
-        </CSSTransition>
+          {(modal) =>
+            modal &&
+            ((props) => (
+              <div style={props}>
+                <Modal hide={hideModal} />
+              </div>
+            ))
+          }
+        </Transition>
       ) : (
         <>
           <Intro />

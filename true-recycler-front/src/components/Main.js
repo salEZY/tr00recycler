@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import Buttons from "./Buttons";
 import Input from "./Input/Input";
 import MaterialItem from "./MaterialItem/MaterialItem";
@@ -40,7 +41,7 @@ const Main = ({ data }) => {
       />
       <div className="materials-list">
         {loaded ? (
-          <h2>Start searching{dots}</h2>
+          <h2 style={{ fontFamily: "Arial" }}>Start searching{dots}</h2>
         ) : (
           <>
             {length < 2 ? (
@@ -54,6 +55,7 @@ const Main = ({ data }) => {
                   color: "#026928",
                   fontSize: "2rem",
                   fontWeight: "bolder",
+                  fontFamily: "Arial",
                 }}
               >
                 No valid result. Try again?
