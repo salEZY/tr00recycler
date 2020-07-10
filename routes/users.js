@@ -31,9 +31,7 @@ router.post(
       let user = await User.findOne({ email });
 
       if (user) {
-        return res
-          .status(400)
-          .json({ errors: [{ msg: "User already exits" }] });
+        return res.status(422).json({ message: "User already exits" });
       }
 
       user = new User({
@@ -45,7 +43,6 @@ router.post(
       user.password = await bcrypt.hash(password, salt);
 
       await user.save();
-      sendEmail(email, "register");
       // JWT
       const payload = {
         user: {
@@ -58,6 +55,7 @@ router.post(
         res.json({ token });
       });
     } catch (error) {
+      console.log(error);
       return res.status(500).json({ message: "Server error!" });
     }
   }

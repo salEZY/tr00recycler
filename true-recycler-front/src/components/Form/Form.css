@@ -29,6 +29,13 @@ form button {
   font-family: Arial;
 }
 
+.success {
+  font-size: 1.1rem;
+  color: #026928;
+  margin-top: 10px;
+  font-family: Arial;
+}
+
 @media screen and (max-width: 767px) {
   .form-input,
   form button {

@@ -18,12 +18,11 @@
   left: 20%;
   bottom: 20%;
   margin: 0 auto;
-  border: 3px solid #026928;
+  border: 3px solid #ecf6eb;
   border-radius: 2em 1em 4em / 0.5em 3em;
   text-align: center;
   display: flex;
   flex-direction: row;
-  /* align-items: center; */
   background: white;
   opacity: 0.9;
 }

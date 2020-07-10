@@ -9,10 +9,7 @@ const Form = ({ name, register }) => {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
-
-  // let user = { email, password };
-  // if (name === "register") user = { ...user, repeatPassword };
-  // axios.post(`/api/auth/${name}`, user).then((res) => {});
+  const [success, setSuccess] = useState("");
 
   const clearForm = () => {
     setEmail("");
@@ -20,32 +17,37 @@ const Form = ({ name, register }) => {
     setRepeatPassword("");
   };
 
-  const errorMessageHandler = (msg) => {
-    setErrorMsg(msg);
+  const messageHandler = (func, msg) => {
+    func(msg);
     setTimeout(() => {
-      setErrorMsg("");
-    }, 4000);
+      func("");
+    }, 500);
     clearForm();
-    return;
   };
 
   const loginHandler = (e) => {
     e.preventDefault();
 
-    if (email === "" || password === "") {
-      setErrorMsg("Email and/or password missing!");
-      setTimeout(() => {
-        setErrorMsg("");
-      }, 4000);
-      clearForm();
+    if (!!!email || !!!password) {
+      messageHandler(setErrorMsg, "Email and/or password missing!");
       return;
     }
 
     if (password.length < 6) {
-      errorMessageHandler("Password should be atleast 6 characters");
+      messageHandler(setErrorMsg, "Password should be atleast 6 characters");
+      return;
     }
 
-    console.log(email, password);
+    axios
+      .post(`/api/auth/login`, { email, password })
+      .then((res) => {
+        console.log(res.data.token);
+        messageHandler(setSuccess, "Success!");
+      })
+      .catch((error) => {
+        messageHandler(setErrorMsg, error.response.data.message);
+        return;
+      });
     clearForm();
   };
 
@@ -53,21 +55,27 @@ const Form = ({ name, register }) => {
     e.preventDefault();
 
     if (email === "" || password === "" || repeatPassword === "") {
-      setErrorMsg("Email and/or passwords missing!");
-      setTimeout(() => {
-        setErrorMsg("");
-      }, 4000);
-      clearForm();
+      messageHandler(setErrorMsg, "Email and/or passwords missing!");
       return;
     }
 
     if (password !== repeatPassword || password.length < 6) {
-      errorMessageHandler("Passwords do not match or too short!");
+      messageHandler(setErrorMsg, "Passwords do not match or too short!");
     }
 
-    console.log(email, password, repeatPassword);
+    axios
+      .post(`/api/auth/register`, { email, password, repeatPassword })
+      .then((res) => {
+        console.log(res.data.token);
+        messageHandler(setSuccess, "You have successfully registered!");
+      })
+      .catch((error) => {
+        messageHandler(setErrorMsg, error.response.data.message);
+        return;
+      });
     clearForm();
   };
+
   return (
     <form method="POST">
       <h3>{name.toUpperCase()}</h3>
@@ -114,13 +122,30 @@ const Form = ({ name, register }) => {
         from={{ opacity: 0 }}
         enter={{ opacity: 1 }}
         leave={{ opacity: 0 }}
-        trail={200}
+        trail={100}
       >
         {(errorMsg) =>
           errorMsg &&
           ((props) => (
             <div style={props} className="error">
               {errorMsg} <i className="fas fa-exclamation-circle"></i>
+            </div>
+          ))
+        }
+      </Transition>
+      <Transition
+        items={success}
+        from={{ opacity: 0 }}
+        enter={{ opacity: 1 }}
+        leave={{ opacity: 0 }}
+        trail={100}
+      >
+        {(success) =>
+          success &&
+          ((props) => (
+            <div style={props} className="success">
+              {success}{" "}
+              <i className="fa fa-check-square-o" aria-hidden="true"></i>
             </div>
           ))
         }
