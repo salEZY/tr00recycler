@@ -21,7 +21,7 @@ const Form = ({ name, register }) => {
     func(msg);
     setTimeout(() => {
       func("");
-    }, 500);
+    }, 1000);
     clearForm();
   };
 
@@ -54,7 +54,7 @@ const Form = ({ name, register }) => {
   const registerHandler = (e) => {
     e.preventDefault();
 
-    if (email === "" || password === "" || repeatPassword === "") {
+    if (!!!email || !!!password || !!!repeatPassword) {
       messageHandler(setErrorMsg, "Email and/or passwords missing!");
       return;
     }
@@ -122,7 +122,7 @@ const Form = ({ name, register }) => {
         from={{ opacity: 0 }}
         enter={{ opacity: 1 }}
         leave={{ opacity: 0 }}
-        trail={100}
+        trail={200}
       >
         {(errorMsg) =>
           errorMsg &&
@@ -138,7 +138,7 @@ const Form = ({ name, register }) => {
         from={{ opacity: 0 }}
         enter={{ opacity: 1 }}
         leave={{ opacity: 0 }}
-        trail={100}
+        trail={200}
       >
         {(success) =>
           success &&

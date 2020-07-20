@@ -2,7 +2,7 @@ import React from "react";
 
 import "./Intro.css";
 
-const Intro = ({ myRef }) => {
+const Intro = () => {
   return (
     <div className="intro">
       <h2>Discover where recyclable materials go!</h2>
