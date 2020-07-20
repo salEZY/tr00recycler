@@ -1,6 +1,7 @@
 .intro {
   height: 92.5vh;
   padding: 1.5rem 0.1px;
+  border-bottom: 3px solid #026928;
 }
 
 .intro h2 {
