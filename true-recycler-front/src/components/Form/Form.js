@@ -108,12 +108,12 @@ const Form = ({ name, register }) => {
             onChange={(e) => setRepeatPassword(e.target.value)}
             required
           ></input>
-          <button className="auth" onClick={registerHandler}>
+          <button className="auth reg" onClick={registerHandler}>
             Sign Up <i className="fa fa-user-plus" aria-hidden="true"></i>
           </button>
         </>
       ) : (
-        <button className="auth" onClick={loginHandler}>
+        <button className="auth reg" onClick={loginHandler}>
           Login <i className="fa fa-sign-in" aria-hidden="true"></i>
         </button>
       )}

@@ -34,7 +34,7 @@ const ToTopButton = () => {
       {(btn) =>
         btn &&
         ((props) => (
-          <div style={props} className="error">
+          <div style={props}>
             <span
               id="to-top-btn"
               className={style}
