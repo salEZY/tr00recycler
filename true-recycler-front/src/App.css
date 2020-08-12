@@ -9,6 +9,7 @@
 
 html {
   font-family: "BioRhyme", serif;
+  height: 100%;
 }
 
 body {
@@ -42,10 +43,12 @@ header span {
 
 footer {
   bottom: 0;
+  margin-top: -(footer height);
+  clear: both;
 }
 
 main {
-  height: 92.5vh;
+  min-height: 92.5vh;
   margin: 0 auto;
   padding: 7.5vh 10px;
 }
