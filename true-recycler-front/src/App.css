@@ -50,7 +50,23 @@ footer {
 main {
   min-height: 92.5vh;
   margin: 0 auto;
-  padding: 7.5vh 10px;
+  padding: 20px 10px 7.5vh 10px;
+}
+
+main .inputs-div {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 1rem;
+}
+
+main .inputs-div form {
+  width: 25%;
+}
+
+main .inputs-div .searches {
+  width: 75%;
 }
 
 h1 {

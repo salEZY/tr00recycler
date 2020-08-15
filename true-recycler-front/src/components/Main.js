@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 
+import AddMaterial from "./AddMaterial/AddMaterial";
 import Buttons from "./Buttons";
 import Input from "./Input/Input";
 import MaterialItem from "./MaterialItem/MaterialItem";
@@ -24,24 +25,32 @@ const Main = ({ data }) => {
 
   return (
     <main>
-      <Buttons
-        data={data}
-        setMaterialByType={setMaterialByType}
-        setFilteredMaterial={setFilteredMaterial}
-        setType={setType}
-        setLoaded={setLoaded}
-        setLength={setLength}
-      />
-      <Input
-        data={data}
-        setFilteredMaterial={setFilteredMaterial}
-        setMaterialByType={setMaterialByType}
-        setLoaded={setLoaded}
-        setLength={setLength}
-      />
+      <div className="inputs-div">
+        <AddMaterial />
+        <div className="searches">
+          <Buttons
+            data={data}
+            setMaterialByType={setMaterialByType}
+            setFilteredMaterial={setFilteredMaterial}
+            setType={setType}
+            setLoaded={setLoaded}
+            setLength={setLength}
+          />
+          <Input
+            data={data}
+            setFilteredMaterial={setFilteredMaterial}
+            setMaterialByType={setMaterialByType}
+            setLoaded={setLoaded}
+            setLength={setLength}
+          />
+        </div>
+      </div>
+
       <div className="materials-list">
         {loaded ? (
-          <h2 style={{ fontFamily: "Arial" }}>Start searching{dots}</h2>
+          <h2 style={{ fontFamily: "Arial", marginTop: "50px" }}>
+            Start searching{dots}
+          </h2>
         ) : (
           <>
             {length < 2 ? (

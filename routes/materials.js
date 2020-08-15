@@ -25,7 +25,7 @@ router.post("/add", async (req, res) => {
     material = new Material(newMaterial);
 
     await material.save();
-    res.json(material);
+    res.json({ message: `${material.materialName} is added!` });
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error!");

@@ -5,21 +5,27 @@ form {
   font-size: 2rem;
 }
 
-.form-input {
+form h3 {
+  margin-top: 10px;
+  font-size: 2rem;
+  font-family: "BioRhyme", serif;
+}
+
+.auth-form .form-input {
   font-size: 1.3rem;
   padding: 10px;
   margin: 15px auto;
-  width: 85%;
+  width: 70%;
   height: 3rem;
   border: 2px solid #82b8bb;
   border-radius: 2em/4em;
   outline: none;
 }
 
-form button {
-  margin: 10px auto;
-  font-size: 2rem;
-  width: 85%;
+.auth-form button {
+  margin: 20px auto !important;
+  font-size: 1.5rem;
+  width: 70%;
 }
 
 .reg {
@@ -28,20 +34,6 @@ form button {
 
 .reg:hover {
   background-color: #69a8ac;
-}
-
-.error {
-  font-size: 1.1rem;
-  color: crimson;
-  margin-top: 10px;
-  font-family: Arial;
-}
-
-.success {
-  font-size: 1.1rem;
-  color: #026928;
-  margin-top: 10px;
-  font-family: Arial;
 }
 
 @media screen and (max-width: 767px) {

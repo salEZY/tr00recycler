@@ -36,7 +36,7 @@ const Input = ({
   return (
     <div className="input-div">
       <h3 style={{ fontFamily: "Arial" }}>
-        Search materials by name(minimum 2 characters)
+        Search by name(minimum 2 characters)
         <i
           className="fa fa-search"
           aria-hidden="true"

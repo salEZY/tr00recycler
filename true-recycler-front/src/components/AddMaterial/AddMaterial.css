@@ -1,0 +1,45 @@
+form {
+  margin: 0 auto;
+  padding: 0 !important;
+  text-align: center !important;
+}
+
+form h3 {
+  margin: 0;
+  font-family: Arial !important;
+  font-size: 1.1rem !important;
+}
+
+form input,
+form select {
+  padding: 5px;
+  width: 80%;
+  margin: 10px auto;
+  font-size: 1.1rem;
+  border: 3px solid #026928;
+  border-radius: 5px;
+  outline: 0;
+}
+
+form select {
+  cursor: pointer;
+}
+
+#addMatBtn {
+  font-size: 1.2rem;
+  font-weight: bolder;
+  width: 60%;
+  padding: 5px;
+  margin: 10px auto !important;
+  outline: 0;
+  border: 2px solid #026928;
+  border-radius: 2em/4em;
+  background-color: white;
+  color: #026928;
+  cursor: pointer;
+}
+
+#addMatBtn:hover {
+  color: white;
+  background-color: #026928;
+}

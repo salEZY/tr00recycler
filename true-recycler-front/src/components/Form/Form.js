@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Transition } from "react-spring/renderprops";
 
+import Message from "../Message/Message";
+import { messageHandler } from "../../util/messageHandler";
 import "./Form.css";
 
 const Form = ({ name, register }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
-  const [errorMsg, setErrorMsg] = useState("");
+  const [emailMsg, setEmailMsg] = useState("");
+  const [passwordMsg, setPasswordMsg] = useState("");
+  const [repeatPasswordMsg, setRepeatPasswordMsg] = useState("");
   const [success, setSuccess] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
 
   const clearForm = () => {
     setEmail("");
@@ -17,24 +21,29 @@ const Form = ({ name, register }) => {
     setRepeatPassword("");
   };
 
-  const messageHandler = (func, msg) => {
-    func(msg);
-    setTimeout(() => {
-      func("");
-    }, 1000);
-    clearForm();
-  };
-
   const loginHandler = (e) => {
     e.preventDefault();
 
-    if (!!!email || !!!password) {
-      messageHandler(setErrorMsg, "Email and/or password missing!");
+    if (!!!email && !!!password) {
+      messageHandler(setEmailMsg, "Email is missing!", clearForm);
+      messageHandler(setPasswordMsg, "Password is missing!", clearForm);
+      return;
+    }
+    if (!!!email) {
+      messageHandler(setEmailMsg, "Email is missing!", clearForm);
+      return;
+    }
+    if (!!!password) {
+      messageHandler(setPasswordMsg, "Password is missing!", clearForm);
       return;
     }
 
     if (password.length < 6) {
-      messageHandler(setErrorMsg, "Password should be atleast 6 characters");
+      messageHandler(
+        setPasswordMsg,
+        "Password should be atleast 6 characters",
+        clearForm
+      );
       return;
     }
 
@@ -42,10 +51,10 @@ const Form = ({ name, register }) => {
       .post(`/api/auth/login`, { email, password })
       .then((res) => {
         console.log(res.data.token);
-        messageHandler(setSuccess, "Success!");
+        messageHandler(setSuccess, "Success!", clearForm);
       })
       .catch((error) => {
-        messageHandler(setErrorMsg, error.response.data.message);
+        messageHandler(setErrorMsg, error.response.data.message, clearForm);
         return;
       });
     clearForm();
@@ -54,30 +63,60 @@ const Form = ({ name, register }) => {
   const registerHandler = (e) => {
     e.preventDefault();
 
-    if (!!!email || !!!password || !!!repeatPassword) {
-      messageHandler(setErrorMsg, "Email and/or passwords missing!");
+    if (!!!email && !!!password && !!!repeatPassword) {
+      messageHandler(setEmailMsg, "Email is missing!", clearForm);
+      messageHandler(setPasswordMsg, "Password is missing!", clearForm);
+      messageHandler(
+        setRepeatPasswordMsg,
+        "Repeated password is missing!",
+        clearForm
+      );
+      return;
+    }
+    if (!!!email) {
+      messageHandler(setEmailMsg, "Email is missing!", clearForm);
+      return;
+    }
+    if (!!!password) {
+      messageHandler(setPasswordMsg, "Password is missing!", clearForm);
+      return;
+    }
+    if (!!!repeatPassword) {
+      messageHandler(
+        setRepeatPasswordMsg,
+        "Repeated password is missing!",
+        clearForm
+      );
       return;
     }
 
     if (password !== repeatPassword || password.length < 6) {
-      messageHandler(setErrorMsg, "Passwords do not match or too short!");
+      messageHandler(
+        setErrorMsg,
+        "Passwords do not match or too short!",
+        clearForm
+      );
     }
 
     axios
       .post(`/api/auth/register`, { email, password, repeatPassword })
       .then((res) => {
         console.log(res.data.token);
-        messageHandler(setSuccess, "You have successfully registered!");
+        messageHandler(
+          setSuccess,
+          "You have successfully registered!",
+          clearForm
+        );
       })
       .catch((error) => {
-        messageHandler(setErrorMsg, error.response.data.message);
+        messageHandler(setErrorMsg, error.response.data.message, clearForm);
         return;
       });
     clearForm();
   };
 
   return (
-    <form method="POST">
+    <form method="POST" className="auth-form">
       <h3>{name.toUpperCase()}</h3>
       <input
         type="email"
@@ -88,6 +127,7 @@ const Form = ({ name, register }) => {
         onChange={(e) => setEmail(e.target.value)}
         required
       ></input>
+      <Message msg={emailMsg} danger={true} />
       <input
         className="form-input"
         type="password"
@@ -97,6 +137,7 @@ const Form = ({ name, register }) => {
         onChange={(e) => setPassword(e.target.value)}
         required
       ></input>
+      <Message msg={passwordMsg} danger={true} />
       {register ? (
         <>
           <input
@@ -108,6 +149,7 @@ const Form = ({ name, register }) => {
             onChange={(e) => setRepeatPassword(e.target.value)}
             required
           ></input>
+          <Message msg={repeatPasswordMsg} danger={true} />
           <button className="auth reg" onClick={registerHandler}>
             Sign Up <i className="fa fa-user-plus" aria-hidden="true"></i>
           </button>
@@ -117,39 +159,8 @@ const Form = ({ name, register }) => {
           Login <i className="fa fa-sign-in" aria-hidden="true"></i>
         </button>
       )}
-      <Transition
-        items={errorMsg}
-        from={{ opacity: 0 }}
-        enter={{ opacity: 1 }}
-        leave={{ opacity: 0 }}
-        trail={200}
-      >
-        {(errorMsg) =>
-          errorMsg &&
-          ((props) => (
-            <div style={props} className="error">
-              {errorMsg} <i className="fas fa-exclamation-circle"></i>
-            </div>
-          ))
-        }
-      </Transition>
-      <Transition
-        items={success}
-        from={{ opacity: 0 }}
-        enter={{ opacity: 1 }}
-        leave={{ opacity: 0 }}
-        trail={200}
-      >
-        {(success) =>
-          success &&
-          ((props) => (
-            <div style={props} className="success">
-              {success}{" "}
-              <i className="fa fa-check-square-o" aria-hidden="true"></i>
-            </div>
-          ))
-        }
-      </Transition>
+      <Message msg={errorMsg} danger={true} />
+      <Message msg={success} />
     </form>
   );
 };

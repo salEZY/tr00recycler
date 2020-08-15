@@ -1,0 +1,14 @@
+.error,
+.success {
+  display: inline;
+  font-size: 1rem;
+  font-weight: bold;
+  color: crimson;
+  font-family: Arial;
+  text-align: left;
+  margin-left: 16%;
+}
+
+.success {
+  color: #026928;
+}
