@@ -4,14 +4,16 @@ form {
   text-align: center !important;
 }
 
-form h3 {
+form h4 {
   margin: 0;
   font-family: Arial !important;
   font-size: 1.1rem !important;
+  margin-top: 10px;
 }
 
 form input,
 form select {
+  color: black;
   padding: 5px;
   width: 80%;
   margin: 10px auto;
@@ -42,4 +44,11 @@ form select {
 #addMatBtn:hover {
   color: white;
   background-color: #026928;
+}
+
+@media screen and (max-width: 1200px) {
+  form input,
+  form select {
+    width: 100%;
+  }
 }

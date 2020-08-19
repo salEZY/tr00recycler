@@ -151,12 +151,12 @@ const Form = ({ name, register }) => {
           ></input>
           <Message msg={repeatPasswordMsg} danger={true} />
           <button className="auth reg" onClick={registerHandler}>
-            Sign Up <i className="fa fa-user-plus" aria-hidden="true"></i>
+            <i className="fa fa-user-plus" aria-hidden="true"></i> Sign Up
           </button>
         </>
       ) : (
         <button className="auth reg" onClick={loginHandler}>
-          Login <i className="fa fa-sign-in" aria-hidden="true"></i>
+          <i className="fa fa-sign-in" aria-hidden="true"></i> Login
         </button>
       )}
       <Message msg={errorMsg} danger={true} />

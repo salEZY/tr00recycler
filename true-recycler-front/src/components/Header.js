@@ -13,7 +13,7 @@ const Header = ({ modal, show }) => {
           <span>Press X to exit screen</span>
         ) : (
           <button className="auth" onClick={show}>
-            Authenticate <i className="fa fa-sign-in" aria-hidden="true"></i>
+            <i className="fa fa-sign-in" aria-hidden="true"></i> Authenticate
           </button>
         )}
       </header>

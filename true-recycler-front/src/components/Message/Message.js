@@ -3,7 +3,7 @@ import { Transition } from "react-spring/renderprops";
 
 import "./Message.css";
 
-const Message = ({ msg, danger }) => {
+const Message = ({ msg, danger, id }) => {
   return (
     <Transition
       items={msg}
@@ -15,13 +15,13 @@ const Message = ({ msg, danger }) => {
       {(msg) =>
         msg &&
         ((props) => (
-          <p style={props} className={danger ? "error" : "success"}>
-            {msg}{" "}
+          <p style={props} className={danger ? "error" : "success"} id={id}>
             {danger ? (
               <i className="fas fa-exclamation-circle"></i>
             ) : (
               <i className="fa fa-check-square-o" aria-hidden="true"></i>
-            )}
+            )}{" "}
+            {msg}
           </p>
         ))
       }

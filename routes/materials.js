@@ -25,10 +25,13 @@ router.post("/add", async (req, res) => {
     material = new Material(newMaterial);
 
     await material.save();
-    res.json({ message: `${material.materialName} is added!` });
+    res.json({
+      message: `${material.materialName} is added!`,
+      id: material._id,
+    });
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error!");
+    return res.status(500).send("Server Error!");
   }
 });
 
@@ -48,7 +51,7 @@ router.get("/:name", async (req, res) => {
     res.json(material);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error!");
+    return res.status(500).send("Server Error!");
   }
 });
 
@@ -64,13 +67,13 @@ router.get("/type/:type", async (req, res) => {
       return res.status(404).json({ message: "Type does NOT exist!" });
     }
     let material = [];
-    type.forEach((t) => material.push(t.materialName));
+    type.forEach((t) => material.push(t));
     res.json({
       material,
     });
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error!");
+    return res.status(500).send("Server Error!");
   }
 });
 
@@ -86,8 +89,33 @@ router.get("/", async (req, res) => {
     res.json(material);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error!");
+    return res.status(500).send("Server Error!");
   }
+});
+
+// Delete material DELETE route
+router.delete("/:matId", async (req, res) => {
+  const matId = req.params.matId;
+
+  let materialToDelete;
+  try {
+    materialToDelete = await Material.findById(matId);
+  } catch (err) {
+    console.error(err.message);
+    return res.status(500).send("Server Error!");
+  }
+
+  if (!materialToDelete) {
+    return res.status(404).json({ message: "Could not find the material!" });
+  }
+  let type = materialToDelete.materialType;
+  try {
+    await materialToDelete.remove();
+  } catch (error) {
+    return res.status(404).json({ message: "Could not delete the material!" });
+  }
+  let materials = await Material.find({ materialType: type });
+  res.status(200).json(materials);
 });
 
 module.exports = router;

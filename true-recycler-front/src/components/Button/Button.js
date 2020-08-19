@@ -10,7 +10,7 @@ const Button = ({ name, onClickHandler }) => {
   return (
     <>
       <button className="btn" onClick={() => onClickHandler(name)} title={name}>
-        {name} <i className={icon} aria-hidden="true"></i>
+        <i className={icon} aria-hidden="true"></i> {name}
       </button>
     </>
   );

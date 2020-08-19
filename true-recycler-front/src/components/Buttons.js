@@ -7,7 +7,6 @@ const Buttons = ({
   data,
   setMaterialByType,
   setFilteredMaterial,
-  setType,
   setLoaded,
   setLength,
 }) => {
@@ -25,7 +24,6 @@ const Buttons = ({
   const getDataByTypeHandler = (name) => {
     axios.get(`/api/materials/type/${name}`).then((res) => {
       setMaterialByType(res.data.material);
-      setType(name);
       setLength(0);
       setFilteredMaterial([]);
       setLoaded(false);

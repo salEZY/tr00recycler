@@ -5,7 +5,7 @@ import Message from "../Message/Message";
 import { messageHandler } from "../../util/messageHandler";
 import "./AddMaterial.css";
 
-const AddMaterial = () => {
+const AddMaterial = ({ setLoading }) => {
   const [materialType, setMaterialType] = useState("");
   const [materialName, setMaterialName] = useState("");
   const [selectMsg, setSelectMsg] = useState("");
@@ -16,14 +16,6 @@ const AddMaterial = () => {
   const clearForm = () => {
     setMaterialType("");
     setMaterialName("");
-  };
-
-  const HandleSelectChange = (e) => {
-    setMaterialType(e.target.value);
-  };
-
-  const HandleInputChange = (e) => {
-    setMaterialName(e.target.value);
   };
 
   const addMaterialHandler = (e) => {
@@ -37,10 +29,13 @@ const AddMaterial = () => {
       messageHandler(setSelectMsg, "Type not selected!", clearForm);
       return;
     }
-
+    setLoading(true);
     axios
       .post("/api/materials/add", { materialName, materialType })
-      .then((res) => messageHandler(setSuccess, res.data.message, clearForm))
+      .then((res) => {
+        messageHandler(setSuccess, res.data.message, clearForm);
+        setLoading(false);
+      })
       .catch((error) => {
         messageHandler(setErrorMsg, error.response.data.message, clearForm);
         return;
@@ -50,10 +45,19 @@ const AddMaterial = () => {
   return (
     <>
       <form method="POST">
-        <h3>Add Material</h3>
-        <input type="text" placeholder="Name" onChange={HandleInputChange} />
-        <Message msg={materialNameMsg} danger={true} />
-        <select name="" onChange={HandleSelectChange}>
+        <h4>Add Material</h4>
+        <input
+          type="text"
+          placeholder="Name"
+          onChange={(e) => setMaterialName(e.target.value)}
+          value={materialName}
+        />
+        <Message msg={materialNameMsg} danger={true} id="addFormStyle" />
+        <select
+          name=""
+          onChange={(e) => setMaterialType(e.target.value)}
+          value={materialType}
+        >
           <option value="">--Select--</option>
           <option value="Paper">Paper</option>
           <option value="General">General</option>
@@ -63,12 +67,12 @@ const AddMaterial = () => {
           <option value="Metal">Metal</option>
           <option value="E-waste">E-waste</option>
         </select>
-        <Message msg={selectMsg} danger={true} />
+        <Message msg={selectMsg} danger={true} id="addFormStyle" />
         <button onClick={addMaterialHandler} id="addMatBtn">
-          Add <i className="fas fa-plus-circle"></i>
+          <i className="fas fa-plus-circle"></i> Add
         </button>
-        <Message msg={errorMsg} danger={true} />
-        <Message msg={success} />
+        <Message msg={errorMsg} danger={true} id="addFormStyle" />
+        <Message msg={success} id="addFormStyle" />
       </form>
     </>
   );

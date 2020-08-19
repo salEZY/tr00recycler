@@ -87,9 +87,22 @@ h3 {
   flex-wrap: wrap;
 }
 
+.materials-list h2 {
+  margin-top: 50px;
+  font-family: Arial;
+}
+
 header a {
   text-decoration: none;
   color: white;
+}
+
+.no-result {
+  margin: 40px auto;
+  color: #026928;
+  font-size: 2rem;
+  font-weight: bolder;
+  font-family: Arial;
 }
 
 @media screen and (max-width: 320px) {
@@ -102,6 +115,13 @@ header a {
   main {
     width: 100%;
   }
+  main .inputs-div {
+    flex-direction: column;
+  }
+  main .inputs-div form,
+  main .inputs-div .searches {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -109,19 +129,4 @@ header a {
     font-size: 2rem;
     padding-top: 17%;
   }
-}
-
-.show-enter {
-  opacity: 0;
-}
-.show-active {
-  opacity: 1;
-  transition: opacity 200ms ease-in;
-}
-.show-exit {
-  opacity: 1;
-}
-.show-exit-active {
-  opacity: 0;
-  transition: opacity 200ms ease-in;
 }

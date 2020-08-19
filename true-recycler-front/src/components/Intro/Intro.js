@@ -41,7 +41,7 @@ const Intro = () => {
           document.documentElement.scrollTop = document.body.scrollHeight;
         }}
       >
-        Get started <i className="fas fa-arrow-alt-circle-down"></i>
+        <i className="fas fa-arrow-alt-circle-down"></i> Get started
       </button>
     </div>
   );
