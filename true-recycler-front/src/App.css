@@ -37,8 +37,12 @@ header {
 }
 
 header span {
-  font-size: 1.2rem;
-  margin-top: 40px;
+  font-size: 1rem;
+  margin-top: 20px;
+}
+
+.header-auth-div span {
+  margin-right: 5px;
 }
 
 footer {
@@ -126,7 +130,18 @@ header a {
 
 @media screen and (max-width: 500px) {
   h1 {
-    font-size: 2rem;
-    padding-top: 17%;
+    font-size: 1.5rem;
+    padding-top: 30%;
+  }
+  header {
+    padding: 10px auto;
+    justify-content: space-between;
+  }
+  .header-auth-div span {
+    font-size: 12px;
+  }
+  footer {
+    font-size: 11px;
+    padding-top: 15px;
   }
 }

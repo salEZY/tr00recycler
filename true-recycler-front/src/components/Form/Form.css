@@ -39,7 +39,7 @@ form h3 {
 @media screen and (max-width: 767px) {
   .form-input,
   form button {
-    width: 95%;
+    width: 90% !important;
   }
 
   .error {

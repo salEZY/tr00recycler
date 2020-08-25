@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Transition } from "react-spring/renderprops";
 
 import "./App.css";
@@ -22,6 +22,13 @@ function App() {
   const hideModal = () => {
     setModal(false);
   };
+
+  useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem("userData"));
+    if (storedData && storedData.token) {
+      login(storedData.userId, storedData.token, storedData.email);
+    }
+  }, [login]);
 
   return (
     <Auth.Provider

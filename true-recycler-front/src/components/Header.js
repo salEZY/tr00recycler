@@ -18,12 +18,12 @@ const Header = ({ modal, show }) => {
         {modal ? (
           <span>Press X to exit screen</span>
         ) : auth.token ? (
-          <>
+          <div className="header-auth-div">
             <span>Hi {auth.email.split("@")[0]}!</span>
             <button className="auth" onClick={logoutHandler}>
               Logout <i className="fas fa-sign-out-alt" aria-hidden="true"></i>
             </button>
-          </>
+          </div>
         ) : (
           <button className="auth" onClick={show}>
             Authenticate <i className="fa fa-sign-in" aria-hidden="true"></i>

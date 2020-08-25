@@ -89,7 +89,7 @@ const MaterialItem = ({
       ) : (
         <>
           <h4>{materialName}</h4>
-          <p>
+          <p style={{ color: "#039b3b", fontWeight: "bold" }}>
             Type: <i className={icon} aria-hidden="true" title={type}></i>
           </p>
           {auth.userId === creatorId && (
