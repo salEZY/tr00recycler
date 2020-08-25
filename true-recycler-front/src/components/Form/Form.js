@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 
 import Message from "../Message/Message";
 import { messageHandler } from "../../util/messageHandler";
+import { Auth } from "../../util/auth-context";
 import "./Form.css";
 
-const Form = ({ name, register }) => {
+const Form = ({ name, register, hide }) => {
+  const auth = useContext(Auth);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
@@ -50,8 +52,9 @@ const Form = ({ name, register }) => {
     axios
       .post(`/api/auth/login`, { email, password })
       .then((res) => {
-        console.log(res.data.token);
         messageHandler(setSuccess, "Success!", clearForm);
+        auth.login(res.data.uid, res.data.token, res.data.email);
+        hide();
       })
       .catch((error) => {
         messageHandler(setErrorMsg, error.response.data.message, clearForm);
@@ -101,12 +104,13 @@ const Form = ({ name, register }) => {
     axios
       .post(`/api/auth/register`, { email, password, repeatPassword })
       .then((res) => {
-        console.log(res.data.token);
         messageHandler(
           setSuccess,
           "You have successfully registered!",
           clearForm
         );
+        auth.login(res.data.uid, res.data.token, res.data.email);
+        hide();
       })
       .catch((error) => {
         messageHandler(setErrorMsg, error.response.data.message, clearForm);

@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 
 import Message from "../Message/Message";
 import { messageHandler } from "../../util/messageHandler";
+import { Auth } from "../../util/auth-context";
 import "./AddMaterial.css";
 
 const AddMaterial = ({ setLoading }) => {
+  const auth = useContext(Auth);
   const [materialType, setMaterialType] = useState("");
-  const [materialName, setMaterialName] = useState("");
+  const [matName, setMaterialName] = useState("");
   const [selectMsg, setSelectMsg] = useState("");
   const [materialNameMsg, setMaterialNameMsg] = useState("");
   const [success, setSuccess] = useState("");
@@ -21,7 +23,7 @@ const AddMaterial = ({ setLoading }) => {
   const addMaterialHandler = (e) => {
     e.preventDefault();
 
-    if (materialName === "") {
+    if (matName === "") {
       messageHandler(setMaterialNameMsg, "Name is missing!", clearForm);
     }
 
@@ -29,14 +31,20 @@ const AddMaterial = ({ setLoading }) => {
       messageHandler(setSelectMsg, "Type not selected!", clearForm);
       return;
     }
+    let materialName = matName.charAt(0).toUpperCase() + matName.slice(1);
     setLoading(true);
     axios
-      .post("/api/materials/add", { materialName, materialType })
+      .post(
+        "/api/materials/add",
+        { materialName, materialType },
+        { headers: { Authorization: `${auth.token}` } }
+      )
       .then((res) => {
         messageHandler(setSuccess, res.data.message, clearForm);
         setLoading(false);
       })
       .catch((error) => {
+        console.log(error);
         messageHandler(setErrorMsg, error.response.data.message, clearForm);
         return;
       });
@@ -50,7 +58,7 @@ const AddMaterial = ({ setLoading }) => {
           type="text"
           placeholder="Name"
           onChange={(e) => setMaterialName(e.target.value)}
-          value={materialName}
+          value={matName}
         />
         <Message msg={materialNameMsg} danger={true} id="addFormStyle" />
         <select

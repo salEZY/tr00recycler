@@ -101,7 +101,7 @@ router.post(
 
       jwt.sign(payload, "SECRET_KEY", { expiresIn: 360000 }, (err, token) => {
         if (err) throw err;
-        res.json({ token });
+        res.json({ email: user.email, uid: user.id, token });
       });
     } catch (error) {
       return res.status(500).json({ message: "Server error!" });

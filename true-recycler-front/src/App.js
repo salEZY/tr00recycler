@@ -8,9 +8,12 @@ import Intro from "./components/Intro/Intro";
 import Main from "./components/Main";
 import Modal from "./components/Modal/Modal";
 import ToTopBtn from "./components/ToTopBtn/ToTopBtn";
+import { Auth } from "./util/auth-context";
+import { useAuth } from "./util/auth-hook";
 
 function App() {
   const [modal, setModal] = useState(false);
+  const { token, userId, email, login, logout } = useAuth();
 
   const showModal = () => {
     setModal(true);
@@ -21,7 +24,16 @@ function App() {
   };
 
   return (
-    <>
+    <Auth.Provider
+      value={{
+        isLoggedIn: !!token,
+        token: token,
+        userId: userId,
+        email: email,
+        login: login,
+        logout: logout,
+      }}
+    >
       <Header modal={modal} show={showModal} />
       <ToTopBtn />
       {modal ? (
@@ -48,7 +60,7 @@ function App() {
         </>
       )}
       <Footer />
-    </>
+    </Auth.Provider>
   );
 }
 

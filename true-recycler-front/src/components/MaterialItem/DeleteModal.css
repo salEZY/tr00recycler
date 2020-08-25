@@ -6,7 +6,7 @@
 }
 
 .delete-modal div button {
-  width: 40%;
+  width: 35%;
   padding: 10px;
   margin: 5px;
   margin-top: 15px;
@@ -20,6 +20,7 @@
 }
 .delete-modal div button:first-child {
   border: 2px solid crimson;
+  color: crimson;
 }
 .delete-modal div button:first-child:hover {
   color: white;
@@ -27,6 +28,7 @@
 }
 .delete-modal div button:last-child {
   border: 2px solid #026928;
+  color: #026928;
 }
 .delete-modal div button:last-child:hover {
   background: #026928;

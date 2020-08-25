@@ -12,7 +12,9 @@ const Input = ({
   const [inputText, setInputText] = useState("");
 
   const filterHandler = (e) => {
-    setInputText(e.target.value);
+    setInputText(
+      e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1)
+    );
     setLength(e.target.value.length);
     setMaterialByType([]);
     if (e.target.value.length < 2) {
@@ -21,7 +23,7 @@ const Input = ({
       return;
     } else {
       let filtered = data.filter((el) =>
-        el.materialName.toLowerCase().includes(e.target.value)
+        el.materialName.includes(e.target.value)
       );
       setFilteredMaterial(filtered);
       setLoaded(false);

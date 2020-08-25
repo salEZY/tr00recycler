@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 
 import AddMaterial from "./AddMaterial/AddMaterial";
@@ -6,8 +6,10 @@ import Buttons from "./Buttons";
 import Input from "./Input/Input";
 import MaterialItem from "./MaterialItem/MaterialItem";
 import Loader from "./Loader/Loader";
+import { Auth } from "../util/auth-context";
 
 const Main = () => {
+  const auth = useContext(Auth);
   const [materialByType, setMaterialByType] = useState([]);
   const [filteredMaterial, setFilteredMaterial] = useState([]);
   const [dots, setDots] = useState("");
@@ -35,7 +37,8 @@ const Main = () => {
   return (
     <main>
       <div className="inputs-div">
-        <AddMaterial setLoading={setLoading} />
+        {auth.userId && <AddMaterial setLoading={setLoading} />}
+
         <div className="searches">
           <Buttons
             data={data}
@@ -68,6 +71,7 @@ const Main = () => {
                     name={el.materialName}
                     type={el.materialType}
                     matId={el._id}
+                    creatorId={el.creator}
                     setMaterialByType={setMaterialByType}
                   />
                 ))
@@ -80,6 +84,7 @@ const Main = () => {
                     name={el.materialName}
                     type={el.materialType}
                     matId={el._id}
+                    creatorId={el.creator}
                     setFilteredMaterial={setFilteredMaterial}
                   />
                 ))

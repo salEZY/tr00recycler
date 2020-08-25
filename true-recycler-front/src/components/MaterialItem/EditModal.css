@@ -1,0 +1,39 @@
+.edit-modal {
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.edit-modal input {
+  width: 100%;
+  padding: 5px;
+  margin-top: 10px;
+  border: 2px solid #039b3b;
+  border-radius: 5px;
+  outline: 0;
+}
+
+#edit,
+#cancel-edit {
+  width: 35%;
+}
+
+#edit {
+  border: 2px solid #3396ff;
+  color: #3396ff;
+}
+#edit:hover {
+  color: white;
+  background: #3396ff;
+}
+
+#cancel-edit {
+  color: crimson;
+  border: 2px solid crimson;
+}
+#cancel-edit:hover {
+  color: white;
+  background: crimson;
+}
