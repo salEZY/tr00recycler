@@ -28,7 +28,7 @@ function App() {
     if (storedData && storedData.token) {
       login(storedData.userId, storedData.token, storedData.email);
     }
-  }, [login]);
+  });
 
   return (
     <Auth.Provider

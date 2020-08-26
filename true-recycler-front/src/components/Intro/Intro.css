@@ -6,6 +6,8 @@
 
 .intro h2 {
   font-size: 3rem;
+  font-family: impact;
+  letter-spacing: 2px;
   background: -webkit-linear-gradient(#026928, #04c24a);
   background-clip: text;
   -webkit-text-fill-color: transparent;

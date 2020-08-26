@@ -113,6 +113,7 @@ const Form = ({ name, register, hide }) => {
         hide();
       })
       .catch((error) => {
+        console.log(error);
         messageHandler(setErrorMsg, error.response.data.message, clearForm);
         return;
       });
