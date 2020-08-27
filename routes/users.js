@@ -50,7 +50,7 @@ router.post(
         },
       };
 
-      jwt.sign(payload, "SECRET_KEY", { expiresIn: 360000 }, (err, token) => {
+      jwt.sign(payload, "SECRET_KEY", { expiresIn: "1h" }, (err, token) => {
         if (err) throw err;
         res.json({ email: user.email, uid: user.id, token });
       });
@@ -80,9 +80,7 @@ router.post(
       let user = await User.findOne({ email });
 
       if (!user) {
-        return res
-          .status(422)
-          .json({ message: "Invalid inputs passed, please check your data" });
+        return res.status(422).json({ message: "User does NOT exist!" });
       }
 
       const isMatch = await bcrypt.compare(password, user.password);
@@ -90,7 +88,7 @@ router.post(
       if (!isMatch) {
         return res
           .status(422)
-          .json({ message: "Invalid inputs passed, please check your data" });
+          .json({ message: "Invalid password. Try again?" });
       }
 
       const payload = {
@@ -99,7 +97,7 @@ router.post(
         },
       };
 
-      jwt.sign(payload, "SECRET_KEY", { expiresIn: 360000 }, (err, token) => {
+      jwt.sign(payload, "SECRET_KEY", { expiresIn: "1h" }, (err, token) => {
         if (err) throw err;
         res.json({ email: user.email, uid: user.id, token });
       });
