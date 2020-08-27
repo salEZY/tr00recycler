@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Transition } from "react-spring/renderprops";
 
 import "./App.css";
 import Header from "./components/Header";
+import UserModal from "./components/UserModal/UserModal";
 import Footer from "./components/Footer";
 import Intro from "./components/Intro/Intro";
 import Main from "./components/Main";
@@ -13,6 +13,7 @@ import { useAuth } from "./util/auth-hook";
 
 function App() {
   const [modal, setModal] = useState(false);
+  const [userModal, setUserModal] = useState(false);
   const { token, userId, email, login, logout } = useAuth();
 
   const showModal = () => {
@@ -23,12 +24,20 @@ function App() {
     setModal(false);
   };
 
+  const userModalHandler = () => {
+    setUserModal(true);
+  };
+
+  const HideUserModalHandler = () => {
+    setUserModal(false);
+  };
+
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem("userData"));
     if (storedData && storedData.token) {
       login(storedData.userId, storedData.token, storedData.email);
     }
-  }, [login]);
+  });
 
   return (
     <Auth.Provider
@@ -41,25 +50,15 @@ function App() {
         logout: logout,
       }}
     >
-      <Header modal={modal} show={showModal} />
+      <Header
+        modal={modal}
+        show={showModal}
+        userModalHandler={userModalHandler}
+      />
+      {userModal && <UserModal HideUserModalHandler={HideUserModalHandler} />}
       <ToTopBtn />
       {modal ? (
-        <Transition
-          items={modal}
-          from={{ opacity: 0 }}
-          enter={{ opacity: 1 }}
-          leave={{ opacity: 0 }}
-          trail={250}
-        >
-          {(modal) =>
-            modal &&
-            ((props) => (
-              <div style={props}>
-                <Modal hide={hideModal} />
-              </div>
-            ))
-          }
-        </Transition>
+        <Modal hide={hideModal} modal={modal} />
       ) : (
         <>
           <Intro />

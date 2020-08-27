@@ -1,0 +1,15 @@
+.user-modal {
+  z-index: 20;
+  position: absolute;
+  top: 7.5vh;
+  right: 20px;
+  width: 30%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  border-right: 3px solid #026928;
+  border-bottom: 3px solid #026928;
+  border-left: 3px solid #026928;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}

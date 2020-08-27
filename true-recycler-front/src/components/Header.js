@@ -1,12 +1,9 @@
 import React, { useContext } from "react";
+
 import { Auth } from "../util/auth-context";
 
-const Header = ({ modal, show }) => {
+const Header = ({ modal, show, userModalHandler }) => {
   const auth = useContext(Auth);
-
-  const logoutHandler = () => {
-    auth.logout();
-  };
   return (
     <>
       <header>
@@ -16,24 +13,22 @@ const Header = ({ modal, show }) => {
           </h1>
         </a>
         {modal ? (
-          <span>Press X to exit screen</span>
+          <span style={{ paddingTop: "15px" }}> Press X to exit screen</span>
         ) : auth.token ? (
           <div className="header-auth-div">
             <span>
               Hi {auth.email.split("@")[0]}!
               <span
                 style={{
-                  margin: "0px 10px",
+                  margin: "30px 10px",
                   fontSize: "1.5rem",
                   cursor: "pointer",
                 }}
+                onClick={userModalHandler}
               >
                 <i className="fas fa-caret-down" aria-hidden="true"></i>
               </span>
             </span>
-            <button className="auth" onClick={logoutHandler}>
-              Logout <i className="fas fa-sign-out-alt" aria-hidden="true"></i>
-            </button>
           </div>
         ) : (
           <button className="auth" onClick={show}>

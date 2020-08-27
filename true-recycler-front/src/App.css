@@ -33,15 +33,16 @@ footer {
 header {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
-header span {
-  font-size: 1rem;
-  margin-top: 20px;
+.header-auth-div {
+  padding-top: 10px;
 }
-
 .header-auth-div span {
+  font-size: 1.3rem;
   margin-right: 5px;
 }
 
