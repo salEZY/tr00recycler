@@ -37,7 +37,7 @@ const AddMaterial = ({ setLoading }) => {
       .post(
         "/api/materials/add",
         { materialName, materialType },
-        { headers: { Authorization: `${auth.token}` } }
+        { headers: { Authorization: auth.token } }
       )
       .then((res) => {
         messageHandler(setSuccess, res.data.message, clearForm);

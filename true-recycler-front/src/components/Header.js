@@ -4,6 +4,7 @@ import { Auth } from "../util/auth-context";
 
 const Header = ({ modal, show, userModalHandler }) => {
   const auth = useContext(Auth);
+
   return (
     <>
       <header>

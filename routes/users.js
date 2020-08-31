@@ -25,39 +25,47 @@ router.post(
 
     if (password !== repeatPassword)
       return res.status(422).json({ message: "Passwords do NOT match!" });
-
+    let user;
     try {
       // Check if user exists
-      let user = await User.findOne({ email });
+      user = await User.findOne({ email });
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({ message: "Server error!" });
+    }
+    if (user) {
+      return res.status(422).json({ message: "User already exits" });
+    }
 
-      if (user) {
-        return res.status(422).json({ message: "User already exits" });
-      }
-
-      user = new User({
-        email,
-        password,
-      });
+    user = new User({
+      email,
+      password,
+    });
+    try {
       // Encrypt password
       const salt = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(password, salt);
 
       await user.save();
-      // JWT
-      const payload = {
-        user: {
-          id: user.id,
-        },
-      };
-
-      jwt.sign(payload, "SECRET_KEY", { expiresIn: "1h" }, (err, token) => {
-        if (err) throw err;
-        res.json({ email: user.email, uid: user.id, token });
-      });
     } catch (error) {
-      console.log(error);
       return res.status(500).json({ message: "Server error!" });
     }
+
+    // JWT
+
+    let token;
+    try {
+      token = jwt.sign({ userId: user.id, email: user.email }, "SECRET_KEY", {
+        expiresIn: "1h",
+      });
+    } catch (error) {
+      return res.status(500).json({ message: "Token Server error!" });
+    }
+
+    res.json({
+      user: { email: user.email, uid: user.id, created: user.createdAt },
+      token,
+    });
   }
 );
 
@@ -75,35 +83,36 @@ router.post(
         .json({ message: "Invalid inputs passed, please check your data" });
 
     const { email, password } = req.body;
+    let user;
     try {
       // Check if user exists
-      let user = await User.findOne({ email });
+      user = await User.findOne({ email });
+    } catch (error) {
+      return res.status(404).json({ message: "Could not find the user!" });
+    }
 
-      if (!user) {
-        return res.status(422).json({ message: "User does NOT exist!" });
-      }
+    if (!user) {
+      return res.status(422).json({ message: "User does NOT exist!" });
+    }
 
-      const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await bcrypt.compare(password, user.password);
 
-      if (!isMatch) {
-        return res
-          .status(422)
-          .json({ message: "Invalid password. Try again?" });
-      }
+    if (!isMatch) {
+      return res.status(422).json({ message: "Invalid password. Try again?" });
+    }
 
-      const payload = {
-        user: {
-          id: user.id,
-        },
-      };
-
-      jwt.sign(payload, "SECRET_KEY", { expiresIn: "1h" }, (err, token) => {
-        if (err) throw err;
-        res.json({ email: user.email, uid: user.id, token });
+    let token;
+    try {
+      token = jwt.sign({ userId: user.id, email: user.email }, "SECRET_KEY", {
+        expiresIn: "1h",
       });
     } catch (error) {
-      return res.status(500).json({ message: "Server error!" });
+      return res.status(500).json({ message: "Token Server error!" });
     }
+    res.json({
+      user: { email: user.email, uid: user.id, created: user.createdAt },
+      token,
+    });
   }
 );
 

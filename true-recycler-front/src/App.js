@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import "./App.css";
 import Header from "./components/Header";
@@ -14,7 +14,7 @@ import { useAuth } from "./util/auth-hook";
 function App() {
   const [modal, setModal] = useState(false);
   const [userModal, setUserModal] = useState(false);
-  const { token, userId, email, login, logout } = useAuth();
+  const { token, userId, email, joined, login, logout } = useAuth();
 
   const showModal = () => {
     setModal(true);
@@ -32,13 +32,6 @@ function App() {
     setUserModal(false);
   };
 
-  useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem("userData"));
-    if (storedData && storedData.token) {
-      login(storedData.userId, storedData.token, storedData.email);
-    }
-  });
-
   return (
     <Auth.Provider
       value={{
@@ -46,6 +39,7 @@ function App() {
         token: token,
         userId: userId,
         email: email,
+        joined: joined,
         login: login,
         logout: logout,
       }}

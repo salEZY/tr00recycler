@@ -37,7 +37,7 @@ const Main = () => {
   return (
     <main>
       <div className="inputs-div">
-        {auth.userId && <AddMaterial setLoading={setLoading} />}
+        {auth.token && <AddMaterial setLoading={setLoading} />}
 
         <div className="searches">
           <Buttons

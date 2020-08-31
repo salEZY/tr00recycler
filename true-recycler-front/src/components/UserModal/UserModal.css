@@ -3,7 +3,7 @@
   position: absolute;
   top: 7.5vh;
   right: 20px;
-  width: 30%;
+  width: 29%;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -12,4 +12,18 @@
   border-left: 3px solid #026928;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  background-color: white;
+}
+
+.user-modal span {
+  cursor: pointer;
+  font-size: 1.5rem !important;
+  position: absolute;
+  right: 5px;
+  color: crimson;
+}
+
+.user-modal button {
+  width: 50%;
+  margin: 20px auto;
 }

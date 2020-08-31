@@ -14,7 +14,6 @@ const Form = ({ name, register, hide }) => {
   const [emailMsg, setEmailMsg] = useState("");
   const [passwordMsg, setPasswordMsg] = useState("");
   const [repeatPasswordMsg, setRepeatPasswordMsg] = useState("");
-  const [success, setSuccess] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
 
   const clearForm = () => {
@@ -52,14 +51,14 @@ const Form = ({ name, register, hide }) => {
     axios
       .post(`/api/auth/login`, { email, password })
       .then((res) => {
-        messageHandler(setSuccess, "Success!", clearForm);
-        auth.login(res.data.uid, res.data.token, res.data.email);
+        auth.login(res.data.user, res.data.token);
         hide();
       })
       .catch((error) => {
         messageHandler(setErrorMsg, error.response.data.message, clearForm);
         return;
       });
+
     clearForm();
   };
 
@@ -104,12 +103,7 @@ const Form = ({ name, register, hide }) => {
     axios
       .post(`/api/auth/register`, { email, password, repeatPassword })
       .then((res) => {
-        messageHandler(
-          setSuccess,
-          "You have successfully registered!",
-          clearForm
-        );
-        auth.login(res.data.uid, res.data.token, res.data.email);
+        auth.login(res.data.user.uid, res.data.token, res.data.user.email);
         hide();
       })
       .catch((error) => {
@@ -165,7 +159,6 @@ const Form = ({ name, register, hide }) => {
         </button>
       )}
       <Message msg={errorMsg} danger={true} />
-      <Message msg={success} />
     </form>
   );
 };
