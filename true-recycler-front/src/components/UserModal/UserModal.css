@@ -27,3 +27,49 @@
   width: 50%;
   margin: 20px auto;
 }
+
+.user-modal .user-info {
+  width: 100%;
+  margin: 20px auto;
+  padding: 5px;
+  font-family: Arial;
+  border-bottom: 3px double #026928;
+}
+
+.user-modal .user-info p {
+  margin: 10px auto;
+}
+
+.user-modal .change-password {
+  width: 100%;
+  padding: 5px;
+  font-family: Arial;
+  border-bottom: 3px double #026928;
+}
+
+.user-modal .change-password input {
+  width: 50%;
+  border: 2px solid #026928;
+}
+
+.user-modal .change-password h4 {
+  margin-bottom: 10px;
+}
+
+.user-modal .change-password button {
+  width: 50%;
+  padding: 10px;
+  border: 2px solid #026928;
+  border-radius: 5px 20px 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  outline: 0;
+  background-color: white;
+  color: #026928;
+  transition: all 0.2s ease-in;
+  cursor: pointer;
+}
+.user-modal .change-password button:hover {
+  color: white;
+  background-color: #026928;
+}
