@@ -13,7 +13,7 @@ const ChangePassword = () => {
           from={{ opacity: 0 }}
           enter={{ opacity: 1 }}
           leave={{ opacity: 0 }}
-          trail={150}
+          trail={200}
         >
           {(showChangePassword) =>
             showChangePassword &&
