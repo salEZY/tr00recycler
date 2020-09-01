@@ -7,23 +7,27 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  border-right: 3px solid #026928;
-  border-bottom: 3px solid #026928;
-  border-left: 3px solid #026928;
+  border-right: 5px double #026928;
+  border-bottom: 5px double #026928;
+  border-left: 5px double #026928;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   background-color: white;
 }
 
-.user-modal span {
+.user-modal-close {
   cursor: pointer;
   font-size: 1.5rem !important;
   position: absolute;
   right: 5px;
-  color: crimson;
+  color: #ef4e6e;
+  transition: 0.2s all ease-in-out;
+}
+.user-modal-close:hover {
+  color: #960e29;
 }
 
-.user-modal button {
+.user-modal .logout-button {
   width: 50%;
   margin: 20px auto;
 }
@@ -38,38 +42,4 @@
 
 .user-modal .user-info p {
   margin: 10px auto;
-}
-
-.user-modal .change-password {
-  width: 100%;
-  padding: 5px;
-  font-family: Arial;
-  border-bottom: 3px double #026928;
-}
-
-.user-modal .change-password input {
-  width: 50%;
-  border: 2px solid #026928;
-}
-
-.user-modal .change-password h4 {
-  margin-bottom: 10px;
-}
-
-.user-modal .change-password button {
-  width: 50%;
-  padding: 10px;
-  border: 2px solid #026928;
-  border-radius: 5px 20px 5px;
-  font-size: 1rem;
-  font-weight: bold;
-  outline: 0;
-  background-color: white;
-  color: #026928;
-  transition: all 0.2s ease-in;
-  cursor: pointer;
-}
-.user-modal .change-password button:hover {
-  color: white;
-  background-color: #026928;
 }

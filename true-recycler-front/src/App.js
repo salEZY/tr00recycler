@@ -49,7 +49,12 @@ function App() {
         show={showModal}
         userModalHandler={userModalHandler}
       />
-      {userModal && <UserModal HideUserModalHandler={HideUserModalHandler} />}
+      {userModal && (
+        <UserModal
+          HideUserModalHandler={HideUserModalHandler}
+          userModal={userModal}
+        />
+      )}
       <ToTopBtn />
       {modal ? (
         <Modal hide={hideModal} modal={modal} />
