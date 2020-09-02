@@ -116,4 +116,51 @@ router.post(
   }
 );
 
+router.patch(
+  "/:userId/change",
+  [
+    check("oldPassword").isLength({ min: 6 }),
+    check("newPassword").isLength({ min: 6 }),
+    check("repeatPassword").isLength({ min: 6 }),
+  ],
+  async (req, res) => {
+    const userId = req.params.userId;
+    const { oldPassword, newPassword, repeatPassword } = req.body;
+
+    if (!oldPassword || newPassword !== repeatPassword) {
+      return res
+        .status(403)
+        .json({ message: "Invalid inputs passed. Try again?" });
+    }
+
+    let user;
+    try {
+      user = await User.findById(userId);
+    } catch (error) {
+      console.log(error);
+      return res
+        .status(400)
+        .json({ message: "Could not change the password. Try again?" });
+    }
+
+    const isMatch = await bcrypt.compare(oldPassword, user.password);
+
+    if (!isMatch) {
+      return res.status(400).json({ message: "Invalid password. Try again?" });
+    }
+
+    user.password = newPassword;
+    try {
+      await user.save();
+    } catch (error) {
+      console.log(error);
+      return res
+        .status(400)
+        .json({ message: "Could not change the password. Try again?" });
+    }
+
+    res.json({ message: "Password is successfully changed!" });
+  }
+);
+
 module.exports = router;
