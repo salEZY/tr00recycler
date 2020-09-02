@@ -21,7 +21,7 @@
 
 #edit {
   border: 2px solid #3396ff;
-  border-radius: 5px 20px 5px;
+  border-radius: 5px 20px 5px 5px;
   color: #3396ff;
 }
 #edit:hover {
@@ -32,7 +32,7 @@
 #cancel-edit {
   color: crimson;
   border: 2px solid crimson;
-  border-radius: 20px 5px 20px;
+  border-radius: 20px 5px 5px 5px;
 }
 #cancel-edit:hover {
   color: white;
