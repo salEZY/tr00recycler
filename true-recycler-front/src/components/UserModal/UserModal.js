@@ -6,12 +6,12 @@ import { Auth } from "../../util/auth-context";
 import ChangePassword from "./ChangePassword";
 import "./UserModal.css";
 
-const UserModal = ({ userModal, HideUserModalHandler }) => {
+const UserModal = ({ userModal, setUserModal }) => {
   const auth = useContext(Auth);
 
   const logoutHandler = () => {
     auth.logout();
-    HideUserModalHandler();
+    setUserModal(false);
   };
   return (
     <Transition
@@ -26,7 +26,10 @@ const UserModal = ({ userModal, HideUserModalHandler }) => {
         ((props) => (
           <div style={props}>
             <div className="user-modal">
-              <span onClick={HideUserModalHandler} className="user-modal-close">
+              <span
+                onClick={() => setUserModal(false)}
+                className="user-modal-close"
+              >
                 <i
                   className="fas fa-window-close"
                   aria-hidden="true"
@@ -34,7 +37,7 @@ const UserModal = ({ userModal, HideUserModalHandler }) => {
                 ></i>
               </span>
               <div className="user-info">
-                <h4>User info</h4>
+                <h3>User info</h3>
                 <p>
                   User e-mail:{" "}
                   <span style={{ fontWeight: "bold" }}>{auth.email}</span>

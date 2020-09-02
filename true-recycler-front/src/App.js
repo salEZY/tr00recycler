@@ -25,11 +25,11 @@ function App() {
   };
 
   const userModalHandler = () => {
-    setUserModal(true);
-  };
-
-  const HideUserModalHandler = () => {
-    setUserModal(false);
+    if (!userModal) {
+      setUserModal(true);
+    } else {
+      setUserModal(false);
+    }
   };
 
   return (
@@ -50,10 +50,7 @@ function App() {
         userModalHandler={userModalHandler}
       />
       {userModal && (
-        <UserModal
-          HideUserModalHandler={HideUserModalHandler}
-          userModal={userModal}
-        />
+        <UserModal setUserModal={setUserModal} userModal={userModal} />
       )}
       <ToTopBtn />
       {modal ? (

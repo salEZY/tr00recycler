@@ -149,8 +149,10 @@ router.patch(
       return res.status(400).json({ message: "Invalid password. Try again?" });
     }
 
-    user.password = newPassword;
     try {
+      const salt = await bcrypt.genSalt(10);
+      user.password = await bcrypt.hash(newPassword, salt);
+
       await user.save();
     } catch (error) {
       console.log(error);
@@ -159,7 +161,7 @@ router.patch(
         .json({ message: "Could not change the password. Try again?" });
     }
 
-    res.json({ message: "Password is successfully changed!" });
+    res.json({ message: "Password is changed!" });
   }
 );
 
