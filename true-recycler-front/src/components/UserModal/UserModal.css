@@ -3,7 +3,7 @@
   position: absolute;
   top: 7.5vh;
   right: 20px;
-  width: 29%;
+  width: 30%;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -42,4 +42,17 @@
 
 .user-modal .user-info p {
   margin: 10px auto;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+  .user-modal {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .user-modal {
+    width: 100%;
+    right: 0;
+  }
 }
