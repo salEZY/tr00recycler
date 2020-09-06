@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Transition } from "react-spring/renderprops";
 
 import Form from "../Form/Form";
+import ForgetPassword from "../ForgetPassword/ForgetPassword";
 
 import "./Modal.css";
 
 const Modal = ({ hide, modal }) => {
+  const [passwordModal, setPasswordModal] = useState(false);
   return (
     <Transition
       items={modal}
@@ -20,7 +22,21 @@ const Modal = ({ hide, modal }) => {
           <div style={props}>
             <div id="modal-holder" onClick={hide}></div>
             <div className="modal">
-              <Form name="login" hide={hide} />
+              <div className="login-change-div">
+                {passwordModal ? (
+                  <ForgetPassword setPasswordModal={setPasswordModal} />
+                ) : (
+                  <>
+                    <Form name="login" hide={hide} />
+                    <p
+                      onClick={() => setPasswordModal(true)}
+                      className="forgot-password"
+                    >
+                      <i className="fas fa-unlock-alt"></i> Forgot password?
+                    </p>
+                  </>
+                )}
+              </div>
               <Form name="register" register={true} hide={hide} />
               <span onClick={hide}>
                 <i

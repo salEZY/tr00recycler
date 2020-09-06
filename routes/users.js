@@ -1,9 +1,11 @@
 const express = require("express");
+const { v4: uuidv4 } = require("uuid");
 const { check, validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
 const User = require("../models/User");
+const { sendEmail } = require("../helpers/email");
 
 const router = express.Router();
 
@@ -41,6 +43,7 @@ router.post(
       email,
       password,
     });
+
     try {
       // Encrypt password
       const salt = await bcrypt.genSalt(10);
@@ -55,11 +58,20 @@ router.post(
 
     let token;
     try {
-      token = jwt.sign({ userId: user.id, email: user.email }, "SECRET_KEY", {
-        expiresIn: "1h",
-      });
+      token = jwt.sign(
+        { userId: user.id, email: user.email },
+        process.env.SECRET,
+        {
+          expiresIn: "1h",
+        }
+      );
     } catch (error) {
       return res.status(500).json({ message: "Token Server error!" });
+    }
+    try {
+      await sendEmail(user.email, "register");
+    } catch (error) {
+      return res.status(500).json({ message: "Sending email failed!" });
     }
 
     res.json({
@@ -103,9 +115,13 @@ router.post(
 
     let token;
     try {
-      token = jwt.sign({ userId: user.id, email: user.email }, "SECRET_KEY", {
-        expiresIn: "1h",
-      });
+      token = jwt.sign(
+        { userId: user.id, email: user.email },
+        process.env.SECRET,
+        {
+          expiresIn: "1h",
+        }
+      );
     } catch (error) {
       return res.status(500).json({ message: "Token Server error!" });
     }
@@ -164,5 +180,47 @@ router.patch(
     res.json({ message: "Password is changed!" });
   }
 );
+
+router.post("/forgot-password", async (req, res) => {
+  const email = req.body.email;
+
+  if (!email) {
+    return res
+      .status(403)
+      .json({ message: "Invalid input passed. Try again?" });
+  }
+
+  let user;
+  try {
+    user = await User.findOne({ email });
+  } catch (error) {
+    return res
+      .status(403)
+      .json({ message: "Something went wrong. Try again?" });
+  }
+
+  if (!user) {
+    return res.status(403).json({ message: "User does NOT exist!" });
+  }
+
+  let tempPassword = uuidv4().replace(/-/g, "");
+
+  try {
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(tempPassword, salt);
+
+    await user.save();
+  } catch (error) {
+    return res.status(500).json({ message: "Server error!" });
+  }
+
+  try {
+    await sendEmail(email, "reset", tempPassword);
+  } catch (error) {
+    return res.status(500).json({ message: "Email sending error!" });
+  }
+
+  res.json({ message: "An email was sent with further instructions!" });
+});
 
 module.exports = router;

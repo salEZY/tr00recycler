@@ -103,7 +103,7 @@ const Form = ({ name, register, hide }) => {
     axios
       .post(`/api/auth/register`, { email, password, repeatPassword })
       .then((res) => {
-        auth.login(res.data.user.uid, res.data.token, res.data.user.email);
+        auth.login(res.data.user, res.data.token);
         hide();
       })
       .catch((error) => {
@@ -116,7 +116,7 @@ const Form = ({ name, register, hide }) => {
 
   return (
     <form method="POST" className="auth-form">
-      <h3>{name.toUpperCase()}</h3>
+      <h3>{name.charAt(0).toUpperCase() + name.slice(1)}</h3>
       <input
         type="email"
         name="email"

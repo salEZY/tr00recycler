@@ -26,6 +26,15 @@
   background: white;
   opacity: 0.9;
 }
+.modal .login-change-div {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-change-div form {
+  width: 100% !important;
+}
 
 .modal form {
   width: 50%;
@@ -35,6 +44,16 @@
   position: absolute;
   top: 2.5px;
   right: 10px;
+}
+
+.forgot-password {
+  width: 70%;
+  padding: 10px;
+  margin: 15px auto;
+  text-align: left;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: #026928;
 }
 @media screen and (min-width: 768px) and (max-width: 1200px) {
   #modal-holder {
@@ -59,12 +78,15 @@
     flex-direction: column;
     border: none;
   }
+  .modal .login-change-div {
+    width: 100%;
+  }
   .modal form {
     width: 100%;
     padding: 0;
   }
-  .modal form:first-child {
-    height: 45%;
+  .forgot-password {
+    width: 90%;
   }
 }
 
