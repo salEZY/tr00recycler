@@ -24,10 +24,13 @@ const Modal = ({ hide, modal }) => {
             <div className="modal">
               <div className="login-change-div">
                 {passwordModal ? (
-                  <ForgetPassword setPasswordModal={setPasswordModal} />
+                  <ForgetPassword
+                    passwordModal={passwordModal}
+                    setPasswordModal={setPasswordModal}
+                  />
                 ) : (
                   <>
-                    <Form name="login" hide={hide} />
+                    <Form name="sign in" hide={hide} />
                     <p
                       onClick={() => setPasswordModal(true)}
                       className="forgot-password"
@@ -37,7 +40,7 @@ const Modal = ({ hide, modal }) => {
                   </>
                 )}
               </div>
-              <Form name="register" register={true} hide={hide} />
+              <Form name="sign up" register={true} hide={hide} />
               <span onClick={hide}>
                 <i
                   className="fa fa-times delete"

@@ -33,7 +33,7 @@ const Header = ({ modal, show, userModalHandler }) => {
           </div>
         ) : (
           <button className="auth" onClick={show}>
-            Authenticate <i className="fa fa-sign-in" aria-hidden="true"></i>
+            <i class="fas fa-users"></i> Authenticate
           </button>
         )}
       </header>

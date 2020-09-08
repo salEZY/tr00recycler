@@ -11,13 +11,13 @@ const createMailOptions = (email, type, info) => {
         ...mailOptions,
         subject: "Registration conformation!",
         html:
-          '<h1 style="color: #026928;margin-bottom: 10px;font-size: 3rem;">Tr00Recycler</h1><p>Welcome! Now start adding missing recyclable materials!</p>',
+          '<h1 style="color: #026928;margin-bottom: 20px;font-size: 3rem;">Tr00Recycler</h1><p>Welcome to True Recycler! Now you can start adding missing recyclable materials!</p>',
       };
     case "reset":
       return {
         ...mailOptions,
         subject: "Password change",
-        html: `<h1 style="color: #026928;margin-bottom: 10px;font-size: 3rem;">Tr00Recycler</h1><p>Your new password is ${info}. It is highly advised to change it as soon as possible</p>`,
+        html: `<h1 style="color: #026928;margin-bottom: 20px;font-size: 3rem;">Tr00Recycler</h1><p>Your new password is <span style="font-size: 18px;font-weight: bold;">${info}</span>. It is highly advised to change it as soon as possible</p>`,
       };
     default:
       return null;

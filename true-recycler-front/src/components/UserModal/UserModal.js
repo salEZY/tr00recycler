@@ -37,7 +37,9 @@ const UserModal = ({ userModal, setUserModal }) => {
                 ></i>
               </span>
               <div className="user-info">
-                <h3>User info</h3>
+                <h3>
+                  <i className="fas fa-user"></i> User info
+                </h3>
                 <p>
                   User e-mail:{" "}
                   <span style={{ fontWeight: "bold" }}>{auth.email}</span>
@@ -51,8 +53,8 @@ const UserModal = ({ userModal, setUserModal }) => {
               </div>
               <ChangePassword />
               <button className="auth logout-button" onClick={logoutHandler}>
-                Logout{" "}
-                <i className="fas fa-sign-out-alt" aria-hidden="true"></i>
+                <i className="fas fa-sign-out-alt" aria-hidden="true"></i>{" "}
+                Logout
               </button>
             </div>
           </div>

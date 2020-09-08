@@ -16,3 +16,13 @@
 #addFormStyle {
   margin-left: 10%;
 }
+
+@media screen and (max-width: 767px) {
+  .error,
+  .success {
+    margin-left: 5%;
+  }
+  #addFormStyle {
+    margin-left: 0.5%;
+  }
+}
