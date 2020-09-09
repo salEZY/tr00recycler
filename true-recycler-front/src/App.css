@@ -100,7 +100,6 @@ h3 {
 header a {
   text-decoration: none;
   color: white;
-  padding-top: 10px;
 }
 
 .no-result {
@@ -137,6 +136,9 @@ header a {
   header {
     padding: 10px auto;
     justify-content: space-between;
+  }
+  header a {
+    padding-top: 10px;
   }
   .header-auth-div span {
     font-size: 12px;
