@@ -21,6 +21,7 @@
   .error,
   .success {
     margin-left: 5%;
+    font-size: 0.6rem;
   }
   #addFormStyle {
     margin-left: 0.5%;
