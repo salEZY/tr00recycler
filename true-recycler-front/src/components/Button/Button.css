@@ -27,7 +27,7 @@
   font-size: 1.3rem;
   padding: 5px;
   height: 45px;
-  margin-top: 5px;
+  margin-top: 12px;
   border: 2px solid white;
   border-radius: 2em / 4em;
   outline: none;
@@ -44,5 +44,6 @@
 @media screen and (max-width: 500px) {
   .auth {
     font-size: 1rem;
+    margin-top: 5px;
   }
 }
