@@ -50,4 +50,8 @@ form h3 {
     font-size: 1rem;
     height: 2rem;
   }
+
+  form h3 {
+    margin: 0 auto !important;
+  }
 }
