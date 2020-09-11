@@ -152,6 +152,9 @@ const Form = ({ name, register, hide }) => {
           <button className="auth reg" onClick={registerHandler}>
             <i className="fa fa-user-plus" aria-hidden="true"></i> Sign Up
           </button>
+          <p className="register-info">
+            Creating an account allows you to add missing materials!
+          </p>
         </>
       ) : (
         <button className="auth reg" onClick={loginHandler}>

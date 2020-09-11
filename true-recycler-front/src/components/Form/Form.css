@@ -36,6 +36,13 @@ form h3 {
   background-color: #69a8ac;
 }
 
+.register-info {
+  font-family: serif;
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
 @media screen and (max-width: 767px) {
   .form-input,
   form button {
