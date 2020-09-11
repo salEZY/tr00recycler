@@ -12,24 +12,50 @@
 }
 
 .modal {
-  width: 60%;
-  height: 60%;
+  width: 30%;
+  height: 70%;
   position: absolute;
-  left: 20%;
-  bottom: 20%;
+  left: 35%;
+  bottom: 15%;
   margin: 0 auto;
-  border: 2px solid #026928;
   border-radius: 2em 1em 4em / 0.5em 3em;
   text-align: center;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   background: white;
   opacity: 0.9;
 }
+.forms-holder {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+
+.switch {
+  font-size: 1.2rem;
+  font-weight: bold;
+  width: 65%;
+  margin: 35px auto;
+  padding: 15px;
+  cursor: pointer;
+  outline: 0;
+  border: 2px solid #026928;
+  border-radius: 4em 8em;
+  color: #026928;
+  background-color: white;
+  transition: all 0.2s ease-in-out;
+}
+
+.switch:hover {
+  background-color: #026928;
+  color: white;
+}
+
 .modal .login-change-div {
-  width: 50%;
+  width: 95%;
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
 }
 
 .login-change-div form {
@@ -37,7 +63,7 @@
 }
 
 .modal form {
-  width: 50%;
+  width: 95%;
 }
 
 .modal span {
@@ -88,6 +114,9 @@
   .forgot-password {
     width: 90%;
     margin: 0 auto;
+  }
+  .switch {
+    width: 70%;
   }
 }
 

@@ -25,11 +25,7 @@ function App() {
   };
 
   const userModalHandler = () => {
-    if (!userModal) {
-      setUserModal(true);
-    } else {
-      setUserModal(false);
-    }
+    !userModal ? setUserModal(true) : setUserModal(false);
   };
 
   return (

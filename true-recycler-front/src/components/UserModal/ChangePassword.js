@@ -138,7 +138,7 @@ const ChangePassword = () => {
         </Transition>
       ) : (
         <button onClick={() => setShowChangePassword(true)}>
-          <i class="fas fa-lock-open"></i> Change Password
+          <i className="fas fa-lock-open"></i> Change Password
         </button>
       )}
     </div>

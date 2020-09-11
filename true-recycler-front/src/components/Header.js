@@ -14,7 +14,7 @@ const Header = ({ modal, show, userModalHandler }) => {
           </h1>
         </a>
         {modal ? (
-          <span style={{ paddingTop: "15px" }}> Press X to exit screen</span>
+          <span style={{ paddingTop: "22px" }}> Press X to exit screen</span>
         ) : auth.token ? (
           <div className="header-auth-div">
             <span>
@@ -33,7 +33,7 @@ const Header = ({ modal, show, userModalHandler }) => {
           </div>
         ) : (
           <button className="auth" onClick={show}>
-            <i class="fas fa-users"></i> Authenticate
+            <i className="fas fa-users"></i> Authenticate
           </button>
         )}
       </header>

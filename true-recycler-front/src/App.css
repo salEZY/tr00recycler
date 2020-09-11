@@ -40,7 +40,7 @@ header {
 }
 
 .header-auth-div {
-  padding-top: 10px;
+  padding-top: 15px;
 }
 .header-auth-div span {
   font-size: 1.3rem;
@@ -138,7 +138,10 @@ header a {
     justify-content: space-between;
   }
   header a {
-    padding-top: 10px;
+    padding-top: 17px;
+  }
+  header span {
+    font-size: 12px;
   }
   .header-auth-div span {
     font-size: 12px;

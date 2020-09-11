@@ -8,6 +8,23 @@ import "./Modal.css";
 
 const Modal = ({ hide, modal }) => {
   const [passwordModal, setPasswordModal] = useState(false);
+  const [register, setRegister] = useState(false);
+  const [btn, setBtn] = useState("Sign up");
+  const [fontAwesome, setFontAwesome] = useState("fas fa-user-plus");
+
+  const switchModeHandler = () => {
+    setPasswordModal(false);
+    if (!register) {
+      setRegister(true);
+      setBtn("Sign in");
+      setFontAwesome("fas fa-sign-in-alt");
+    } else {
+      setRegister(false);
+      setBtn("Sign up");
+      setFontAwesome("fas fa-user-plus");
+    }
+  };
+
   return (
     <Transition
       items={modal}
@@ -22,25 +39,34 @@ const Modal = ({ hide, modal }) => {
           <div style={props}>
             <div id="modal-holder" onClick={hide}></div>
             <div className="modal">
-              <div className="login-change-div">
-                {passwordModal ? (
-                  <ForgetPassword
-                    passwordModal={passwordModal}
-                    setPasswordModal={setPasswordModal}
-                  />
+              <button className="switch" onClick={switchModeHandler}>
+                Switch to {btn} <i className={fontAwesome}></i>
+              </button>
+              <div className="forms-holder">
+                {register ? (
+                  <Form name="sign up" register={true} hide={hide} />
                 ) : (
-                  <>
-                    <Form name="sign in" hide={hide} />
-                    <p
-                      onClick={() => setPasswordModal(true)}
-                      className="forgot-password"
-                    >
-                      <i className="fas fa-unlock-alt"></i> Forgot password?
-                    </p>
-                  </>
+                  <div className="login-change-div">
+                    {passwordModal ? (
+                      <ForgetPassword
+                        passwordModal={passwordModal}
+                        setPasswordModal={setPasswordModal}
+                      />
+                    ) : (
+                      <>
+                        <Form name="sign in" hide={hide} />
+                        <p
+                          onClick={() => setPasswordModal(true)}
+                          className="forgot-password"
+                        >
+                          <i className="fas fa-unlock-alt"></i> Forgot password?
+                        </p>
+                      </>
+                    )}
+                  </div>
                 )}
               </div>
-              <Form name="sign up" register={true} hide={hide} />
+
               <span onClick={hide}>
                 <i
                   className="fa fa-times delete"
