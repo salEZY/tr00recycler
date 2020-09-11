@@ -41,6 +41,7 @@ form h3 {
   font-size: 15px;
   font-weight: bold;
   margin-bottom: 10px;
+  color: #026928;
 }
 
 @media screen and (max-width: 767px) {
