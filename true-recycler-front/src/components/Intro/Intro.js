@@ -19,7 +19,15 @@ const Intro = () => {
         newspaper and office paper, plastic laundry detergent bottles and even
         playground equipment!
       </p>
-      <p style={{ fontWeight: "bolder", fontSize: "1.5rem" }}>
+      <p
+        style={{
+          color: "#026928",
+          fontWeight: "bolder",
+          fontSize: "1.5rem",
+          textAlign: "center",
+          textShadow: "1px 1px 1px black, 2px 2px 1px black",
+        }}
+      >
         Create an account and start adding materials missing from the database!
       </p>
       <div className="img-holder">
