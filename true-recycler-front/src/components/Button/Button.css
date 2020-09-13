@@ -41,9 +41,15 @@
   background-color: #026928;
 }
 
+@media screen and (min-width: 501px) and (max-width: 767px) {
+  .auth {
+    margin-top: 8px !important;
+  }
+}
+
 @media screen and (max-width: 500px) {
   .auth {
     font-size: 1rem;
-    margin-top: 5px;
+    margin-top: 5px !important;
   }
 }
