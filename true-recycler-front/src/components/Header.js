@@ -14,7 +14,7 @@ const Header = ({ modal, show, userModalHandler }) => {
           </h1>
         </a>
         {modal ? (
-          <span style={{ paddingTop: "22px" }}> Press X to exit screen</span>
+          <span> Press X to exit screen</span>
         ) : auth.token ? (
           <div className="header-auth-div">
             <span>
