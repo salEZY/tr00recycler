@@ -138,9 +138,6 @@ header a {
     padding: 10px auto;
     justify-content: space-between;
   }
-  header a {
-    padding-top: 17px;
-  }
   header span {
     font-size: 12px;
   }
