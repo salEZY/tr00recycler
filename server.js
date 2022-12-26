@@ -28,5 +28,5 @@ if (process.env.NODE_ENV === "production") {
 }
 
 app.listen(port, () => {
-  console.log(`TrueRecycler server started at port ${port}`);
+  console.log(`TrueRecycler server started at port ${port}!`);
 });
